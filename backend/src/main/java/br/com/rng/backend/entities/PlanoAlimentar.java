@@ -9,12 +9,14 @@ import lombok.*;
 @Setter
 @EqualsAndHashCode
 @Entity
-@Table(name = "planos_alimentares")
+@Table(name = "tb_planos_alimentares")
 public class PlanoAlimentar {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
     private String nome;
+
+    @Column(columnDefinition = "TEXT")
     private String descricao;
 }
