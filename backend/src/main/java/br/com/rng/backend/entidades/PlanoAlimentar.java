@@ -1,7 +1,10 @@
-package br.com.rng.backend.entities;
+package br.com.rng.backend.entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,4 +22,7 @@ public class PlanoAlimentar {
 
     @Column(columnDefinition = "TEXT")
     private String descricao;
+
+    @ManyToMany(mappedBy = "planos")
+    private List<Alimentacao> alimentacoes = new ArrayList<>();
 }

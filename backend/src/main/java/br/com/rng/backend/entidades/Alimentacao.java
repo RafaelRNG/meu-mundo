@@ -1,4 +1,4 @@
-package br.com.rng.backend.entities;
+package br.com.rng.backend.entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
