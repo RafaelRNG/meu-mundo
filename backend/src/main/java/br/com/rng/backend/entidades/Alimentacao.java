@@ -6,6 +6,8 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -33,5 +35,6 @@ public class Alimentacao {
 
     @ManyToMany
     @JoinTable(name = "tb_alimentacao_plano", joinColumns = @JoinColumn(name = "alimentacao_codigo"), inverseJoinColumns = @JoinColumn(name = "plano_codigo"))
+    @JsonIgnore
     private List<PlanoAlimentar> planos = new ArrayList<>();
 }
