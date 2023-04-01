@@ -24,5 +24,5 @@ public class PlanoAlimentar {
     private String descricao;
 
     @ManyToMany(mappedBy = "planos")
-    private List<Alimentacao> alimentacoes = new ArrayList<>();
+    private List<Refeicao> alimentacoes = new ArrayList<>();
 }

@@ -14,8 +14,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Setter
 @EqualsAndHashCode
 @Entity
-@Table(name = "tb_alimentacoes")
-public class Alimentacao {
+@Table(name = "tb_refeicoes")
+public class Refeicao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +34,7 @@ public class Alimentacao {
     private String horario;
 
     @ManyToMany
-    @JoinTable(name = "tb_alimentacao_plano", joinColumns = @JoinColumn(name = "alimentacao_codigo"), inverseJoinColumns = @JoinColumn(name = "plano_codigo"))
+    @JoinTable(name = "tb_alimentacoes_planos", joinColumns = @JoinColumn(name = "alimentacao_codigo"), inverseJoinColumns = @JoinColumn(name = "plano_codigo"))
     @JsonIgnore
     private List<PlanoAlimentar> planos = new ArrayList<>();
 }

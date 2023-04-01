@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.rng.backend.entidades.Alimentacao;
-import br.com.rng.backend.servicos.AlimentacaoServico;
+import br.com.rng.backend.entidades.Refeicao;
+import br.com.rng.backend.servicos.RefeicaoServico;
 
 @RestController
 @RequestMapping("/alimentacoes")
-public class AlimentacaoControler {
+public class RefeicaoControle {
 
    @Autowired
-   private AlimentacaoServico alimentacaoServico;
+   private RefeicaoServico refeicaoServico;
 
    @GetMapping("/{codigo}")
-   public ResponseEntity<Alimentacao> buscarUm(@PathVariable Long codigo) {
+   public ResponseEntity<Refeicao> buscarUm(@PathVariable Long codigo) {
 
-      return ResponseEntity.ok(this.alimentacaoServico.buscarUm(codigo));
+      return ResponseEntity.ok(this.refeicaoServico.buscarUm(codigo));
    }
 }
