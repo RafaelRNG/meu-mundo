@@ -1,13 +1,14 @@
 package br.com.rng.backend.servicos;
 
-import java.util.Optional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.rng.backend.dtos.AlimentoDTO;
 import br.com.rng.backend.entidades.Alimento;
 import br.com.rng.backend.repositorios.AlimentoRepositorio;
-import br.com.rng.backend.servicos.excecoes.NaoEncontrado;
 
 @Service
 public class AlimentoServico {
@@ -15,9 +16,12 @@ public class AlimentoServico {
    @Autowired
    private AlimentoRepositorio alimentoRepositorio;
 
-   public Alimento buscarUm(Long codigo) {
-      Optional<Alimento> alimento = this.alimentoRepositorio.findById(codigo);
+   public List<AlimentoDTO> buscarAlimentos() {
+      List<Alimento> alimentos = this.alimentoRepositorio.findAll();
 
-      return alimento.orElseThrow(() -> new NaoEncontrado("Alimento não encontrado!!"));
+      List<AlimentoDTO> alimentosDTOs = alimentos.stream().map(alimento -> new AlimentoDTO(alimento))
+            .collect(Collectors.toList());
+
+      return alimentosDTOs;
    }
 }
