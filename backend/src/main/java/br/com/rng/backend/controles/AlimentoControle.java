@@ -15,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import br.com.rng.backend.dtos.AlimentoDTO;
 import br.com.rng.backend.entidades.Alimento;
 import br.com.rng.backend.servicos.AlimentoServico;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/alimentos")
@@ -30,7 +31,7 @@ public class AlimentoControle {
    }
 
    @PostMapping
-   public ResponseEntity<?> salvarAlimento(@RequestBody AlimentoDTO alimentoDTO) {
+   public ResponseEntity<?> salvarAlimento(@Valid @RequestBody AlimentoDTO alimentoDTO) {
 
       AlimentoDTO alimento = this.alimentoServico.salvarAlimento(alimentoDTO);
 

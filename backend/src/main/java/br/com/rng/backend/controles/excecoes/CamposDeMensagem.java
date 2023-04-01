@@ -7,8 +7,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class FormatoPadraoExcecao {
+public class CamposDeMensagem {
 
-   private Integer codigo;
+   private String campo;
    private String mensagem;
 }
