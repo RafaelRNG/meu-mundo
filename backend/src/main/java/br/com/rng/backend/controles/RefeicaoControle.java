@@ -11,7 +11,7 @@ import br.com.rng.backend.entidades.Refeicao;
 import br.com.rng.backend.servicos.RefeicaoServico;
 
 @RestController
-@RequestMapping("/alimentacoes")
+@RequestMapping("/refeicoes")
 public class RefeicaoControle {
 
    @Autowired

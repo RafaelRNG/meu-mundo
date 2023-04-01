@@ -34,7 +34,11 @@ public class Refeicao {
     private String horario;
 
     @ManyToMany
-    @JoinTable(name = "tb_alimentacoes_planos", joinColumns = @JoinColumn(name = "alimentacao_codigo"), inverseJoinColumns = @JoinColumn(name = "plano_codigo"))
+    @JoinTable(name = "tb_refeicoes_planos", joinColumns = @JoinColumn(name = "refeicao_codigo"), inverseJoinColumns = @JoinColumn(name = "plano_codigo"))
     @JsonIgnore
     private List<PlanoAlimentar> planos = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(name = "tb_refeicoes_detalhes", joinColumns = @JoinColumn(name = "refeicao_codigo"), inverseJoinColumns = @JoinColumn(name = "detalhe_codigo"))
+    private List<DetalheAlimento> detalhes = new ArrayList<>();
 }
