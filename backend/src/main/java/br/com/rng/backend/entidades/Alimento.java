@@ -18,18 +18,22 @@ import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+
 @Entity
 @Table(name = "tb_alimentos")
 public class Alimento {
 
+   @Getter
+   @Setter
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long codigo;
+   @Getter
+   @Setter
    private String nome;
 
    @JsonIgnore
+   @Getter
    @OneToMany(mappedBy = "alimento")
    private List<DetalheAlimento> detalhes = new ArrayList<>();
 }

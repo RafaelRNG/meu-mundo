@@ -24,4 +24,13 @@ public class AlimentoServico {
 
       return alimentosDTOs;
    }
+
+   public AlimentoDTO salvarAlimento(AlimentoDTO alimentoDTO) {
+      Alimento alimento = new Alimento();
+
+      alimento.setNome(alimentoDTO.getNome());
+
+      alimento = this.alimentoRepositorio.save(alimento);
+      return new AlimentoDTO(alimento);
+   }
 }
