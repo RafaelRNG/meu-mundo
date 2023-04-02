@@ -1,5 +1,6 @@
 package br.com.rng.backend.controles.excecoes;
 
+import org.springframework.data.mapping.PropertyReferenceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -33,5 +34,14 @@ public class ControleExcecao {
       }
 
       return ResponseEntity.status(codigoHttp).body(validacao);
+   }
+
+   @ExceptionHandler(PropertyReferenceException.class)
+   public ResponseEntity<FormatoPadraoExcecao> referenciaDePropriedade() {
+
+      Integer codigoHttp = HttpStatus.BAD_REQUEST.value();
+
+      FormatoPadraoExcecao formato = new FormatoPadraoExcecao(codigoHttp, "Erro na formatação de pesquisa!!");
+      return ResponseEntity.status(codigoHttp).body(formato);
    }
 }
