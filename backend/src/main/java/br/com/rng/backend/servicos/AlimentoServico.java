@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.rng.backend.dtos.AlimentoDTO;
 import br.com.rng.backend.entidades.Alimento;
@@ -18,6 +19,7 @@ public class AlimentoServico {
    @Autowired
    private AlimentoRepositorio alimentoRepositorio;
 
+   @Transactional(readOnly = true)
    public List<AlimentoDTO> buscarAlimentos() {
       List<Alimento> alimentos = this.alimentoRepositorio.findAll();
 
@@ -27,6 +29,7 @@ public class AlimentoServico {
       return alimentosDTOs;
    }
 
+   @Transactional
    public AlimentoDTO salvarAlimento(AlimentoDTO alimentoDTO) {
       Alimento alimento = new Alimento();
 
@@ -36,6 +39,7 @@ public class AlimentoServico {
       return new AlimentoDTO(alimento);
    }
 
+   @Transactional
    public void alterarAlimento(Long codigo, AlimentoDTO alimentoDTO) {
       try {
 
@@ -49,6 +53,7 @@ public class AlimentoServico {
       }
    }
 
+   @Transactional
    public void deletarAlimento(Long codigo) {
       this.alimentoRepositorio.deleteById(codigo);
    }
