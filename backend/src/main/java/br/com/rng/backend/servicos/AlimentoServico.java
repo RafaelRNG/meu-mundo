@@ -28,9 +28,22 @@ public class AlimentoServico {
    public AlimentoDTO salvarAlimento(AlimentoDTO alimentoDTO) {
       Alimento alimento = new Alimento();
 
-      alimento.setNome(alimentoDTO.getNome());
+      this.copiarDtoParaEntidade(alimentoDTO, alimento);
 
       alimento = this.alimentoRepositorio.save(alimento);
       return new AlimentoDTO(alimento);
+   }
+
+   public void alterarAlimento(Long codigo, AlimentoDTO alimentoDTO) {
+
+      Alimento alimento = this.alimentoRepositorio.getReferenceById(codigo);
+
+      this.copiarDtoParaEntidade(alimentoDTO, alimento);
+
+      this.alimentoRepositorio.save(alimento);
+   }
+
+   public void copiarDtoParaEntidade(AlimentoDTO alimentoDTO, Alimento alimento) {
+      alimento.setNome(alimentoDTO.getNome());
    }
 }

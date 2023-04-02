@@ -7,13 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.rng.backend.dtos.AlimentoDTO;
-import br.com.rng.backend.entidades.Alimento;
 import br.com.rng.backend.servicos.AlimentoServico;
 import jakarta.validation.Valid;
 
@@ -37,5 +37,12 @@ public class AlimentoControle {
 
       return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().path("/{codigo}")
             .buildAndExpand(alimento.getCodigo()).toUri()).build();
+   }
+
+   @PutMapping("/{codigo}")
+   public ResponseEntity<?> alterarAlimento(@PathVariable Long codigo, @Valid @RequestBody AlimentoDTO alimentoDTO) {
+      this.alimentoServico.alterarAlimento(codigo, alimentoDTO);
+
+      return ResponseEntity.noContent().build();
    }
 }
