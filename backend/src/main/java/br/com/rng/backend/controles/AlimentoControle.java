@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,6 +43,13 @@ public class AlimentoControle {
    @PutMapping("/{codigo}")
    public ResponseEntity<?> alterarAlimento(@PathVariable Long codigo, @Valid @RequestBody AlimentoDTO alimentoDTO) {
       this.alimentoServico.alterarAlimento(codigo, alimentoDTO);
+
+      return ResponseEntity.noContent().build();
+   }
+
+   @DeleteMapping("/{codigo}")
+   public ResponseEntity<?> deletarAlimento(@PathVariable Long codigo) {
+      this.alimentoServico.deletarAlimento(codigo);
 
       return ResponseEntity.noContent().build();
    }

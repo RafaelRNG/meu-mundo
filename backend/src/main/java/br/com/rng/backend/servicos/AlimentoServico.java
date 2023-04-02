@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import br.com.rng.backend.dtos.AlimentoDTO;
 import br.com.rng.backend.entidades.Alimento;
 import br.com.rng.backend.repositorios.AlimentoRepositorio;
+import br.com.rng.backend.servicos.excecoes.NaoEncontrado;
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class AlimentoServico {
@@ -35,15 +37,23 @@ public class AlimentoServico {
    }
 
    public void alterarAlimento(Long codigo, AlimentoDTO alimentoDTO) {
+      try {
 
-      Alimento alimento = this.alimentoRepositorio.getReferenceById(codigo);
+         Alimento alimento = this.alimentoRepositorio.getReferenceById(codigo);
 
-      this.copiarDtoParaEntidade(alimentoDTO, alimento);
+         this.copiarDtoParaEntidade(alimentoDTO, alimento);
 
-      this.alimentoRepositorio.save(alimento);
+         this.alimentoRepositorio.save(alimento);
+      } catch (EntityNotFoundException e) {
+         throw new NaoEncontrado("Alimento não encontrado!!");
+      }
    }
 
-   public void copiarDtoParaEntidade(AlimentoDTO alimentoDTO, Alimento alimento) {
+   public void deletarAlimento(Long codigo) {
+      this.alimentoRepositorio.deleteById(codigo);
+   }
+
+   private void copiarDtoParaEntidade(AlimentoDTO alimentoDTO, Alimento alimento) {
       alimento.setNome(alimentoDTO.getNome());
    }
 }
