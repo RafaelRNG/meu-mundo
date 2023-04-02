@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.rng.backend.dtos.DetalheAlimentoDTO;
 import br.com.rng.backend.dtos.RetornarDetalheAlimentoDTO;
@@ -25,6 +26,7 @@ public class DetalheAlimentoServico {
    @Autowired
    private AlimentoRepositorio alimentoRepositorio;
 
+   @Transactional(readOnly = true)
    public Page<RetornarDetalheAlimentoDTO> buscarDetalhes(Pageable paginacao) {
 
       Page<DetalheAlimento> alimentos = this.detalheAlimentoRepositorio.findAll(paginacao);
@@ -34,12 +36,14 @@ public class DetalheAlimentoServico {
       return alimentosDtos;
    }
 
+   @Transactional(readOnly = true)
    public DetalheAlimento buscarUm(Long codigo) {
       Optional<DetalheAlimento> detalhe = this.detalheAlimentoRepositorio.findById(codigo);
 
       return detalhe.orElseThrow(() -> new NaoEncontrado("Detalhe do alimento não encontrado!"));
    }
 
+   @Transactional
    public DetalheAlimentoDTO salvarDetalhe(DetalheAlimentoDTO detalheAlimentoDTO) {
       DetalheAlimento detalheAlimento = new DetalheAlimento();
       this.copiarDtoParaEntidade(detalheAlimentoDTO, detalheAlimento);
@@ -49,6 +53,7 @@ public class DetalheAlimentoServico {
       return new DetalheAlimentoDTO(detalheAlimento.getCodigo());
    }
 
+   @Transactional
    public void alterarDetalhe(Long codigo, DetalheAlimentoDTO detalheAlimentoDTO) {
       try {
          DetalheAlimento detalhe = this.detalheAlimentoRepositorio.getReferenceById(codigo);
@@ -61,6 +66,7 @@ public class DetalheAlimentoServico {
       }
    }
 
+   @Transactional
    public void deletarDetalhe(Long codigo) {
       this.detalheAlimentoRepositorio.deleteById(codigo);
    }

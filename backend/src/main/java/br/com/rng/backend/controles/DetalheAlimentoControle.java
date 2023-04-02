@@ -18,6 +18,7 @@ import br.com.rng.backend.dtos.DetalheAlimentoDTO;
 import br.com.rng.backend.dtos.RetornarDetalheAlimentoDTO;
 import br.com.rng.backend.entidades.DetalheAlimento;
 import br.com.rng.backend.servicos.DetalheAlimentoServico;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/detalhes")
@@ -37,7 +38,7 @@ public class DetalheAlimentoControle {
    }
 
    @PostMapping
-   public ResponseEntity<?> salvavrDetalhe(@RequestBody DetalheAlimentoDTO detalheAlimentoDTO) {
+   public ResponseEntity<?> salvavrDetalhe(@Valid @RequestBody DetalheAlimentoDTO detalheAlimentoDTO) {
 
       DetalheAlimentoDTO detalhe = this.detalheAlimentoServico.salvarDetalhe(detalheAlimentoDTO);
 
@@ -47,7 +48,7 @@ public class DetalheAlimentoControle {
 
    @PutMapping("/{codigo}")
    public ResponseEntity<?> alterarDetalhe(@PathVariable Long codigo,
-         @RequestBody DetalheAlimentoDTO detalheAlimentoDTO) {
+         @Valid @RequestBody DetalheAlimentoDTO detalheAlimentoDTO) {
 
       this.detalheAlimentoServico.alterarDetalhe(codigo, detalheAlimentoDTO);
 
