@@ -3,6 +3,8 @@ package br.com.rng.backend.controles;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +14,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.rng.backend.dtos.AlimentoDTO;
+import br.com.rng.backend.eventos.ObjetoSalvoEvento;
 import br.com.rng.backend.servicos.AlimentoServico;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 
 @RestController
@@ -25,6 +28,9 @@ public class AlimentoControle {
    @Autowired
    private AlimentoServico alimentoServico;
 
+   @Autowired
+   private ApplicationEventPublisher editorEvento;
+
    @GetMapping
    public ResponseEntity<List<AlimentoDTO>> buscarAlimentos() {
 
@@ -32,12 +38,14 @@ public class AlimentoControle {
    }
 
    @PostMapping
-   public ResponseEntity<?> salvarAlimento(@Valid @RequestBody AlimentoDTO alimentoDTO) {
+   public ResponseEntity<?> salvarAlimento(@Valid @RequestBody AlimentoDTO alimentoDTO, HttpServletResponse resposta) {
 
       AlimentoDTO alimento = this.alimentoServico.salvarAlimento(alimentoDTO);
+      Integer codigoHttp = HttpStatus.CREATED.value();
 
-      return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().path("/{codigo}")
-            .buildAndExpand(alimento.getCodigo()).toUri()).build();
+      this.editorEvento.publishEvent(new ObjetoSalvoEvento(this, resposta, alimento.getCodigo()));
+
+      return ResponseEntity.status(codigoHttp).build();
    }
 
    @PutMapping("/{codigo}")

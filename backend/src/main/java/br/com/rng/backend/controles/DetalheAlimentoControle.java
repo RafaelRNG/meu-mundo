@@ -1,8 +1,10 @@
 package br.com.rng.backend.controles;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +19,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import br.com.rng.backend.dtos.DetalheAlimentoDTO;
 import br.com.rng.backend.dtos.RetornarDetalheAlimentoDTO;
 import br.com.rng.backend.entidades.DetalheAlimento;
+import br.com.rng.backend.eventos.ObjetoSalvoEvento;
 import br.com.rng.backend.servicos.DetalheAlimentoServico;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 
 @RestController
@@ -26,6 +30,9 @@ public class DetalheAlimentoControle {
 
    @Autowired
    private DetalheAlimentoServico detalheAlimentoServico;
+
+   @Autowired
+   private ApplicationEventPublisher editorEvento;
 
    @GetMapping
    public ResponseEntity<Page<RetornarDetalheAlimentoDTO>> buscarDetalhes(Pageable paginacao) {
@@ -38,12 +45,14 @@ public class DetalheAlimentoControle {
    }
 
    @PostMapping
-   public ResponseEntity<?> salvavrDetalhe(@Valid @RequestBody DetalheAlimentoDTO detalheAlimentoDTO) {
+   public ResponseEntity<?> salvavrDetalhe(@Valid @RequestBody DetalheAlimentoDTO detalheAlimentoDTO,
+         HttpServletResponse resposta) {
 
       DetalheAlimentoDTO detalhe = this.detalheAlimentoServico.salvarDetalhe(detalheAlimentoDTO);
+      Integer codigoHttp = HttpStatus.CREATED.value();
+      this.editorEvento.publishEvent(new ObjetoSalvoEvento(this, resposta, detalhe.getCodigo()));
 
-      return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().path("/{codigo}")
-            .buildAndExpand(detalhe.getCodigo()).toUri()).build();
+      return ResponseEntity.status(codigoHttp).build();
    }
 
    @PutMapping("/{codigo}")
