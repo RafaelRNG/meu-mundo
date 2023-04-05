@@ -33,8 +33,7 @@ public class Refeicao {
     private Double minimoGordura;
     private String horario;
 
-    @ManyToMany
-    @JoinTable(name = "tb_refeicoes_planos", joinColumns = @JoinColumn(name = "refeicao_codigo"), inverseJoinColumns = @JoinColumn(name = "plano_codigo"))
+    @ManyToMany(mappedBy = "refeicoes")
     @JsonIgnore
     private List<PlanoAlimentar> planos = new ArrayList<>();
 

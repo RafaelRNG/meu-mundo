@@ -23,6 +23,7 @@ public class PlanoAlimentar {
     @Column(columnDefinition = "TEXT")
     private String descricao;
 
-    @ManyToMany(mappedBy = "planos")
+    @ManyToMany
+    @JoinTable(name = "tb_refeicoes_planos", joinColumns = @JoinColumn(name = "plano_codigo"), inverseJoinColumns = @JoinColumn(name = "refeicao_codigo"))
     private List<Refeicao> refeicoes = new ArrayList<>();
 }
