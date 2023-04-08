@@ -1,9 +1,11 @@
 package br.com.rng.backend.servicos;
 
+import br.com.rng.backend.dtos.RefeicaoDTO;
 import br.com.rng.backend.dtos.RetornarRefeicaoDTO;
 import br.com.rng.backend.entidades.Refeicao;
 import br.com.rng.backend.repositorios.RefeicaoRepositorio;
 import br.com.rng.backend.servicos.excecoes.NaoEncontrado;
+import jakarta.persistence.EntityNotFoundException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,7 +32,36 @@ public class RefeicaoServico {
         return new RetornarRefeicaoDTO(refeicao);
     }
 
+    public RefeicaoDTO salvarRefeicao(RefeicaoDTO refeicaoDTO) {
+        Refeicao refeicao = new Refeicao();
+
+        this.copiarDtoParaEntidade(refeicaoDTO, refeicao);
+        refeicao = this.refeicaoRepositorio.save(refeicao);
+
+        return new RefeicaoDTO(refeicao);
+    }
+
+    public void alterarRefeicao(Long codigo, RefeicaoDTO refeicaoDTO) {
+        try {
+            Refeicao refeicao = this.refeicaoRepositorio.getReferenceById(codigo);
+
+            this.copiarDtoParaEntidade(refeicaoDTO, refeicao);
+            this.refeicaoRepositorio.save(refeicao);
+        } catch (EntityNotFoundException e) {
+            throw new NaoEncontrado("Refeição não encontrado");
+        }
+    }
+
     public void deletarRefeicao(Long codigo) {
         this.refeicaoRepositorio.deleteById(codigo);
+    }
+
+    public void copiarDtoParaEntidade(RefeicaoDTO refeicaoDTO, Refeicao refeicao) {
+        refeicao.setNome(refeicaoDTO.getNome());
+        refeicao.setDescricao(refeicaoDTO.getDescricao());
+        refeicao.setMinimoCarbo(refeicaoDTO.getMinimoCarbo());
+        refeicao.setMinimoProteina(refeicaoDTO.getMinimoProteina());
+        refeicao.setMinimoGordura(refeicaoDTO.getMinimoGordura());
+        refeicao.setHorario(refeicaoDTO.getHorario());
     }
 }

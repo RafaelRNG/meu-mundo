@@ -44,7 +44,7 @@ public class ControleExcecao {
       return ResponseEntity.status(this.codigoHttp).body(formato);
    }
 
-   @ExceptionHandler(DataIntegrityViolationException.class)
+   // @ExceptionHandler(DataIntegrityViolationException.class)
    public ResponseEntity<FormatoPadraoExcecao> violacaoDeIntegridade() {
 
       FormatoPadraoExcecao formato = new FormatoPadraoExcecao(this.codigoHttp,
