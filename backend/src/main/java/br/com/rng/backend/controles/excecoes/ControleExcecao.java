@@ -1,5 +1,6 @@
 package br.com.rng.backend.controles.excecoes;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.mapping.PropertyReferenceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,8 @@ import br.com.rng.backend.servicos.excecoes.NaoEncontrado;
 @ControllerAdvice
 public class ControleExcecao {
 
+   Integer codigoHttp = HttpStatus.BAD_REQUEST.value();
+
    @ExceptionHandler(NaoEncontrado.class)
    public ResponseEntity<FormatoPadraoExcecao> naoEncontradoExcecao(NaoEncontrado naoEncontrado) {
 
@@ -23,25 +26,30 @@ public class ControleExcecao {
    }
 
    @ExceptionHandler(MethodArgumentNotValidException.class)
-   public ResponseEntity<MensagemDeValidacao> erroValidacao(MethodArgumentNotValidException notValid) {
+   public ResponseEntity<MensagemDeValidacao> erroValidacao(MethodArgumentNotValidException naoValido) {
 
-      Integer codigoHttp = HttpStatus.BAD_REQUEST.value();
+      MensagemDeValidacao validacao = new MensagemDeValidacao(this.codigoHttp, "Erro nos campos de validação!");
 
-      MensagemDeValidacao validacao = new MensagemDeValidacao(codigoHttp, "Erro nos campos de validação!");
-
-      for (FieldError camposDeErro : notValid.getFieldErrors()) {
+      for (FieldError camposDeErro : naoValido.getFieldErrors()) {
          validacao.adicionarErro(camposDeErro.getField(), camposDeErro.getDefaultMessage());
       }
 
-      return ResponseEntity.status(codigoHttp).body(validacao);
+      return ResponseEntity.status(this.codigoHttp).body(validacao);
    }
 
    @ExceptionHandler(PropertyReferenceException.class)
    public ResponseEntity<FormatoPadraoExcecao> referenciaDePropriedade() {
 
-      Integer codigoHttp = HttpStatus.BAD_REQUEST.value();
+      FormatoPadraoExcecao formato = new FormatoPadraoExcecao(this.codigoHttp, "Erro na formatação de pesquisa!!");
+      return ResponseEntity.status(this.codigoHttp).body(formato);
+   }
 
-      FormatoPadraoExcecao formato = new FormatoPadraoExcecao(codigoHttp, "Erro na formatação de pesquisa!!");
-      return ResponseEntity.status(codigoHttp).body(formato);
+   @ExceptionHandler(DataIntegrityViolationException.class)
+   public ResponseEntity<FormatoPadraoExcecao> violacaoDeIntegridade() {
+
+      FormatoPadraoExcecao formato = new FormatoPadraoExcecao(this.codigoHttp,
+            "Erro na tentativa de excluir um objeto que possui relacionamento!");
+
+      return ResponseEntity.status(this.codigoHttp).body(formato);
    }
 }
