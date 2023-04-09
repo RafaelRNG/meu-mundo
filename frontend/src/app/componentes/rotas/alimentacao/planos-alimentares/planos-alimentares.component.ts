@@ -15,6 +15,15 @@ export class PlanosAlimentaresComponent implements OnInit {
   constructor(private alimentacaoService: AlimentacaoService) { }
 
   ngOnInit(): void {
-    this.planosAlimentares = PlanoAlimentarFicticio
+    //dado mocado
+    //this.planosAlimentares = PlanoAlimentarFicticio
+    this.retornarPlanosAlimentares()
+  }
+
+  public retornarPlanosAlimentares() {
+    this.alimentacaoService.retornarPlanosAlimentares()
+      .subscribe({
+        next: resposta => this.planosAlimentares = resposta
+      })
   }
 }

@@ -2,7 +2,10 @@
   <mat-card-header>
     <mat-card-title>{{ this.planoAlimentar.nome }}</mat-card-title>
   </mat-card-header>
-  <img mat-card-image [src]="this.planoAlimentar.urlImagem" [alt]="this.planoAlimentar.nome" width="200" height="300">
+  <!-- <img mat-card-image [src]="this.planoAlimentar.urlImagem" [alt]="this.planoAlimentar.nome" width="200" height="300">-->
+  <!--Uso temporario de imagem, atualizar quando back-end estiver fazendo serviço de armazenamento de imagem-->
+  <img mat-card-image src="https://cliqueuniao.com.br/wp-content/uploads/2019/04/PLANO-ALIMENTAR.jpg"
+    [alt]="this.planoAlimentar.nome" width="200" height="300">
   <mat-card-content>
     <p>{{ this.planoAlimentar.descricao }}</p>
   </mat-card-content>

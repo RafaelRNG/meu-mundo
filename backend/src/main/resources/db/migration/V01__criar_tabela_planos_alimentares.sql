@@ -5,3 +5,7 @@ CREATE TABLE IF NOT EXISTS tb_planos_alimentares(
 );
 
 INSERT INTO tb_planos_alimentares(nome, descricao) VALUES('Alimentação 1', 'Alimentação para ganho de massa muscular!');
+INSERT INTO tb_planos_alimentares(nome, descricao) VALUES('Alimentação 1', 'Alimentação para ganho de massa muscular!');
+INSERT INTO tb_planos_alimentares(nome, descricao) VALUES('Alimentação 1', 'Alimentação para ganho de massa muscular!');
+INSERT INTO tb_planos_alimentares(nome, descricao) VALUES('Alimentação 1', 'Alimentação para ganho de massa muscular!');
+INSERT INTO tb_planos_alimentares(nome, descricao) VALUES('Alimentação 1', 'Alimentação para ganho de massa muscular!');
