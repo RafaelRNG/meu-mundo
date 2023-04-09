@@ -10,8 +10,8 @@
     <p>{{ this.planoAlimentar.descricao }}</p>
   </mat-card-content>
   <mat-card-actions [align]="'end'">
-    <a mat-flat-button>
-      Olhar
+    <a [routerLink]="['/alimentacao', this.planoAlimentar.codigo]" mat-flat-button>
+      Olhar detalhes
       <mat-icon>search</mat-icon>
     </a>
   </mat-card-actions>
