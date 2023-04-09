@@ -5,20 +5,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Importações de modulos
 import { AppRoutingModule } from './app-routing.module';
-import { ComponentesModule } from './componentes/componentes.module';
+import { CompartilhadosModule } from './compartilhados/compartilhados.module';
 
 //Importações de componentes
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ComponentesModule
+    CompartilhadosModule
   ],
   providers: [],
   bootstrap: [AppComponent]

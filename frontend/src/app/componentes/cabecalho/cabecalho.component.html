@@ -1,6 +1,10 @@
-<mat-toolbar color="primary" class="mat-elevation-z3">
+<mat-toolbar class="principal-cabecalho-container" color="primary">
   <mat-toolbar-row class="container cabecalho-container">
-    <span>
+    <span class="botao-navegacao-container">
+      <ng-content select="#botaoNavegacao">
+      </ng-content>
+    </span>
+    <span class="titulo-container">
       <h2>Meu mundo</h2>
       <mat-icon aria-hidden="false">dashboard</mat-icon>
     </span>
