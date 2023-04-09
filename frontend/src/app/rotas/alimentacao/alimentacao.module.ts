@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AlimentacaoRoutingModule } from './alimentacao-routing.module';
 import { AlimentacaoComponent } from './alimentacao.component';
 import { CompartilhadosModule } from 'src/app/compartilhados/compartilhados.module';
+import { ComponentesModule } from 'src/app/componentes/componentes.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { CompartilhadosModule } from 'src/app/compartilhados/compartilhados.modu
   imports: [
     CommonModule,
     AlimentacaoRoutingModule,
-    CompartilhadosModule
+    CompartilhadosModule,
+    ComponentesModule
   ],
   exports: [
     AlimentacaoComponent

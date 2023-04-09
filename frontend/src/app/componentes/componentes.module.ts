@@ -12,11 +12,13 @@ import { MatListModule } from '@angular/material/list';
 //Importações de componentes
 import { CabecalhoComponent } from './cabecalho/cabecalho.component';
 import { NavegacaoLateralComponent } from './navegacao-lateral/navegacao-lateral.component';
+import { ApresentacaoComponent } from './apresentacao/apresentacao.component';
 
 @NgModule({
   declarations: [
     CabecalhoComponent,
-    NavegacaoLateralComponent
+    NavegacaoLateralComponent,
+    ApresentacaoComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { NavegacaoLateralComponent } from './navegacao-lateral/navegacao-lateral
   ],
   exports: [
     CabecalhoComponent,
-    NavegacaoLateralComponent
+    NavegacaoLateralComponent,
+    ApresentacaoComponent
   ]
 })
 export class ComponentesModule { }
