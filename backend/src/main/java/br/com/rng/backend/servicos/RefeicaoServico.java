@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class RefeicaoServico {
@@ -19,12 +20,14 @@ public class RefeicaoServico {
     @Autowired
     private RefeicaoRepositorio refeicaoRepositorio;
 
+    @Transactional(readOnly = true)
     public List<RetornarRefeicaoDTO> buscarRefeicoes() {
         List<Refeicao> refeicoes = this.refeicaoRepositorio.findAll();
 
         return refeicoes.stream().map(refeicao -> new RetornarRefeicaoDTO(refeicao)).collect(Collectors.toList());
     }
 
+    @Transactional(readOnly = true)
     public RetornarRefeicaoDTO buscarUm(Long codigo) {
         Refeicao refeicao = this.refeicaoRepositorio.findById(codigo)
                 .orElseThrow(() -> new NaoEncontrado("Refeição não encontrada!!"));
@@ -32,6 +35,7 @@ public class RefeicaoServico {
         return new RetornarRefeicaoDTO(refeicao);
     }
 
+    @Transactional
     public RefeicaoDTO salvarRefeicao(RefeicaoDTO refeicaoDTO) {
         Refeicao refeicao = new Refeicao();
 
@@ -41,6 +45,7 @@ public class RefeicaoServico {
         return new RefeicaoDTO(refeicao);
     }
 
+    @Transactional
     public void alterarRefeicao(Long codigo, RefeicaoDTO refeicaoDTO) {
         try {
             Refeicao refeicao = this.refeicaoRepositorio.getReferenceById(codigo);
@@ -52,6 +57,7 @@ public class RefeicaoServico {
         }
     }
 
+    @Transactional
     public void deletarRefeicao(Long codigo) {
         this.refeicaoRepositorio.deleteById(codigo);
     }
