@@ -1,9 +1,14 @@
+//Importações do Angular
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+//Importações de modulos
+import { AppRoutingModule } from './app-routing.module';
+import { ComponentesModule } from './componentes/componentes.module';
+
+//Importações de componentes
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
@@ -12,7 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ComponentesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

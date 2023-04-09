@@ -1,0 +1,7 @@
+.menu-navegacao-container {
+  width: 20rem;
+
+  & [role="listitem"] [role="img"] {
+   margin: 0 6px 6px 0;
+  }
+}
