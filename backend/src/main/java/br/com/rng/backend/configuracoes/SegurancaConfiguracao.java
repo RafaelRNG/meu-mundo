@@ -42,7 +42,7 @@ public class SegurancaConfiguracao {
 
          @Override
          public void addCorsMappings(CorsRegistry registro) {
-            registro.addMapping("/**").allowedOrigins("http://localhost:4200");
+            registro.addMapping("/**").allowedOrigins("http://localhost:3332");
          }
       };
    }

@@ -1,0 +1,27 @@
+.planos-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  width: 100%;
+}
+
+.plano-card {
+  width: 100%;
+  margin: 0 0.9rem 1rem 0.9rem;
+}
+
+@media (min-width: 77rem) {
+  .plano-card {
+    margin: 1rem;
+    width: 46%;
+  }
+}
+
+@media (min-width: 120rem) {
+  .plano-card {
+    margin: 0.5rem;
+    width: 32%;
+  }
+}

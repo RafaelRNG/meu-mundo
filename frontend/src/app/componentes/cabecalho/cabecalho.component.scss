@@ -1,6 +1,7 @@
 .principal-cabecalho-container {
   height: 64px !important;
   position: fixed;
+  z-index: 9999;
 }
 
 .cabecalho-container {
@@ -8,13 +9,12 @@
     margin-right: 1.5rem;
   }
 
-  & .titulo-container{
+  & .titulo-container {
     display: flex;
     align-items: center;
 
-
     & h2 {
-      margin-right: .9rem;
+      margin-right: 0.9rem;
       font-weight: bold;
     }
   }
