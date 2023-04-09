@@ -3,10 +3,16 @@
     fixedTopGap="64">
     <mat-nav-list>
       <mat-list>
-        <a>
+        <a [routerLink]="['/inicio']">
           <mat-list-item role="listitem">
             <mat-icon>home</mat-icon>
             Início
+          </mat-list-item>
+        </a>
+        <a [routerLink]="['/alimentacao']">
+          <mat-list-item role="listitem">
+            <mat-icon>restaurant</mat-icon>
+            Alimentação
           </mat-list-item>
         </a>
       </mat-list>

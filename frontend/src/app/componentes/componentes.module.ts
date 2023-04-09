@@ -1,6 +1,7 @@
 //importações do Angular
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 //Importações do angular material
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -22,7 +23,8 @@ import { NavegacaoLateralComponent } from './navegacao-lateral/navegacao-lateral
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    RouterModule
   ],
   exports: [
     CabecalhoComponent,

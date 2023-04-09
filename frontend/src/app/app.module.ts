@@ -9,10 +9,12 @@ import { CompartilhadosModule } from './compartilhados/compartilhados.module';
 
 //Importações de componentes
 import { AppComponent } from './app.component';
+import { InicioComponent } from './rotas/inicio/inicio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,
