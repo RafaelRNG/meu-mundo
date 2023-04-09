@@ -12,10 +12,12 @@ export class PlanosAlimentaresComponent implements OnInit {
 
   public planosAlimentares!: PlanoAlimentar[]
 
+  public semRespostaApi: boolean = false
+
   constructor(private alimentacaoService: AlimentacaoService) { }
 
   ngOnInit(): void {
-    //dado mocado
+    //dado mocado para teste
     //this.planosAlimentares = PlanoAlimentarFicticio
     this.retornarPlanosAlimentares()
   }
@@ -23,7 +25,8 @@ export class PlanosAlimentaresComponent implements OnInit {
   public retornarPlanosAlimentares() {
     this.alimentacaoService.retornarPlanosAlimentares()
       .subscribe({
-        next: resposta => this.planosAlimentares = resposta
+        next: (resposta: PlanoAlimentar[]) => this.planosAlimentares = resposta,
+        error: () => this.semRespostaApi = true
       })
   }
 }

@@ -1,0 +1,11 @@
+.imagem-de-erro {
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 77rem) {
+  .imagem-de-erro {
+    width: 50%;
+    height: 50%;
+  }
+}
