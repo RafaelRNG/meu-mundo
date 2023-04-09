@@ -20,6 +20,7 @@ import br.com.rng.backend.dtos.RetornarRefeicaoDTO;
 import br.com.rng.backend.eventos.ObjetoSalvoEvento;
 import br.com.rng.backend.servicos.RefeicaoServico;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/refeicoes")
@@ -43,7 +44,7 @@ public class RefeicaoControle {
    }
 
    @PostMapping
-   public ResponseEntity<?> salvartRefeicao(@RequestBody RefeicaoDTO refeicaoDTO, HttpServletResponse resposta) {
+   public ResponseEntity<?> salvartRefeicao(@Valid @RequestBody RefeicaoDTO refeicaoDTO, HttpServletResponse resposta) {
 
       RefeicaoDTO refeicao = this.refeicaoServico.salvarRefeicao(refeicaoDTO);
       Integer codigoHttp = HttpStatus.CREATED.value();
@@ -53,7 +54,7 @@ public class RefeicaoControle {
    }
 
    @PutMapping("/{codigo}")
-   public ResponseEntity<?> alterarRefeicao(@PathVariable Long codigo, @RequestBody RefeicaoDTO refeicaoDTO) {
+   public ResponseEntity<?> alterarRefeicao(@PathVariable Long codigo, @Valid @RequestBody RefeicaoDTO refeicaoDTO) {
       this.refeicaoServico.alterarRefeicao(codigo, refeicaoDTO);
 
       return ResponseEntity.noContent().build();
