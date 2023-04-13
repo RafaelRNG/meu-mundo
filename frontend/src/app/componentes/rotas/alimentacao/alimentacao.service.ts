@@ -17,7 +17,7 @@ export class AlimentacaoService {
   }
 
   //adicionar tipo em plano alimentar quando começar a criar as rotas das outras entidades
-  public retornarPlanoAlimentar(codigo: number): Observable<any> {
-    return this.clienteHttp.get<any>(`${this.urlApi}planos/${codigo}`)
+  public retornarPlanoAlimentar(codigo: number): Observable<PlanoAlimentar> {
+    return this.clienteHttp.get<PlanoAlimentar>(`${this.urlApi}planos/${codigo}`)
   }
 }

@@ -1,9 +1,9 @@
-<div>
+<div *ngIf="this.planoAlimentar">
   <section class="plano-alimentar-container">
     <div>
       <span>
-        <h2>{{ this.planoAlimentar?.nome }}</h2>
-        <p>{{ this.planoAlimentar?.descricao }}</p>
+        <h2>{{ this.planoAlimentar.nome }}</h2>
+        <p>{{ this.planoAlimentar.descricao }}</p>
       </span>
       <span>
         <img src="https://cliqueuniao.com.br/wp-content/uploads/2019/04/PLANO-ALIMENTAR.jpg"

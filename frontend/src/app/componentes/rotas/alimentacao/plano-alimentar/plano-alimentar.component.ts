@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlimentacaoService } from '../alimentacao.service';
 import { ActivatedRoute, RouterStateSnapshot } from '@angular/router';
+import { PlanoAlimentar } from '../alimentacao-tipos/PlanoAlimentar.tipo';
 
 @Component({
   selector: 'rng-plano-alimentar',
@@ -10,7 +11,7 @@ import { ActivatedRoute, RouterStateSnapshot } from '@angular/router';
 export class PlanoAlimentarComponent implements OnInit {
 
   public codigo!: number
-  public planoAlimentar: any
+  public planoAlimentar!: PlanoAlimentar
 
   constructor(private router: ActivatedRoute, private alimentacaoServico: AlimentacaoService) { }
 
