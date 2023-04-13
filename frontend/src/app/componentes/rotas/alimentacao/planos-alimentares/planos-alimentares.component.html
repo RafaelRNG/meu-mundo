@@ -1,3 +1,7 @@
+<button mat-flat-button color="primary" class="botao-criar-plano">
+  <mat-icon>add</mat-icon>
+  Criar plano
+</button>
 <section *ngIf="!this.semRespostaApi" class="planos-container">
   <div class="plano-card" *ngFor="let plano of this.planosAlimentares">
     <rng-card-plano-alimentar [planoAlimentar]="plano"></rng-card-plano-alimentar>
