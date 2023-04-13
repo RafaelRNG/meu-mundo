@@ -11,6 +11,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
 
 //Importações de componentes
 import { CabecalhoComponent } from './cabecalho/cabecalho.component';
@@ -41,7 +42,7 @@ import { PlanoAlimentarComponent } from './rotas/alimentacao/plano-alimentar/pla
     HttpClientModule,
     MatCardModule,
     MatButtonModule,
-
+    MatChipsModule
   ],
   exports: [
     CabecalhoComponent,

@@ -14,7 +14,7 @@ export class PlanosAlimentaresComponent implements OnInit {
 
   public semRespostaApi: boolean = false
 
-  constructor(private alimentacaoService: AlimentacaoService) { }
+  constructor(private alimentacaoServico: AlimentacaoService) { }
 
   ngOnInit(): void {
     //dado mocado para teste
@@ -23,7 +23,7 @@ export class PlanosAlimentaresComponent implements OnInit {
   }
 
   public retornarPlanosAlimentares() {
-    this.alimentacaoService.retornarPlanosAlimentares()
+    this.alimentacaoServico.retornarPlanosAlimentares()
       .subscribe({
         next: (resposta: PlanoAlimentar[]) => this.planosAlimentares = resposta,
         error: () => this.semRespostaApi = true

@@ -9,3 +9,4 @@ CREATE TABLE IF NOT EXISTS tb_refeicoes (
 );
 
 INSERT INTO  tb_refeicoes(nome, descricao, minimo_carbo, minimo_proteina, minimo_gordura, horario) VALUES('Café da manhã', 'Refeição mais proteica do meu dia', 100, 100, 0.5, '08:30');
+INSERT INTO  tb_refeicoes(nome, descricao, minimo_carbo, minimo_proteina, minimo_gordura, horario) VALUES('Almoço', 'Refeição Com muito carbo', 250.00, 10.5, 0.5, '12:15');

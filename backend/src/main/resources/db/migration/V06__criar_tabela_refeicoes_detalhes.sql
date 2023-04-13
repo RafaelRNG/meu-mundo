@@ -11,3 +11,7 @@ CREATE TABLE IF NOT EXISTS tb_refeicoes_detalhes(
 INSERT INTO tb_refeicoes_detalhes(refeicao_codigo, detalhe_codigo) VALUES(1, 1);
 INSERT INTO tb_refeicoes_detalhes(refeicao_codigo, detalhe_codigo) VALUES(1, 2);
 INSERT INTO tb_refeicoes_detalhes(refeicao_codigo, detalhe_codigo) VALUES(1, 3);
+
+INSERT INTO tb_refeicoes_detalhes(refeicao_codigo, detalhe_codigo) VALUES(2, 1);
+INSERT INTO tb_refeicoes_detalhes(refeicao_codigo, detalhe_codigo) VALUES(2, 3);
+INSERT INTO tb_refeicoes_detalhes(refeicao_codigo, detalhe_codigo) VALUES(2, 2);

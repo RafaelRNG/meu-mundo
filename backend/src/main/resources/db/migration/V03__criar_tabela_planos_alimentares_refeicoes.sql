@@ -9,3 +9,4 @@ CREATE TABLE IF NOT EXISTS tb_refeicoes_planos(
 );
 
 INSERT INTO tb_refeicoes_planos(plano_codigo, refeicao_codigo) VALUES (1, 1);
+INSERT INTO tb_refeicoes_planos(plano_codigo, refeicao_codigo) VALUES (1, 2);

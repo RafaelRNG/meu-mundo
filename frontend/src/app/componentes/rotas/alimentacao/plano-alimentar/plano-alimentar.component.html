@@ -1,0 +1,48 @@
+<div>
+  <section class="plano-alimentar-container">
+    <div>
+      <span>
+        <h2>{{ this.planoAlimentar?.nome }}</h2>
+        <p>{{ this.planoAlimentar?.descricao }}</p>
+      </span>
+      <span>
+        <img src="https://cliqueuniao.com.br/wp-content/uploads/2019/04/PLANO-ALIMENTAR.jpg"
+          alt="imagem do plano alimentar!">
+      </span>
+    </div>
+  </section>
+  <span>
+
+    <mat-card class="card-informacao" *ngFor="let refeicao of this.planoAlimentar?.refeicoes">
+      <mat-card-header class="card-titulo">
+        <mat-card-title>{{ refeicao.nome }}</mat-card-title>
+        <mat-card-subtitle>
+          <h4>Descrição: {{ refeicao.descricao }}</h4>
+          <h4>Horário {{ refeicao.horario }}</h4>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="card-conteudo">
+        <mat-chip-list>
+          <mat-chip selected>Carboidrato {{ refeicao.minimoCarbo }}</mat-chip>
+          <mat-chip selected color="accent">Proteina {{ refeicao.minimoProteina }}</mat-chip>
+          <mat-chip selected color="warn">Gordura {{ refeicao.minimoGordura }}</mat-chip>
+        </mat-chip-list>
+
+        <div class="container-detalhe-alimento">
+          <h3>Lista de alimentos e sua tabela nutricional!</h3>
+          <div class="conteudo-detalhe-alimento" *ngFor="let detalhe of refeicao?.detalhes">
+            <span>
+              <mat-icon>soup_kitchen</mat-icon>
+            </span>
+            <span>
+              <h4>{{ detalhe.alimento.nome }}</h4>
+              <h5> Carboidrato: {{ detalhe.carbo }} </h5>
+              <h5> Proteina: {{ detalhe.proteina }} </h5>
+              <h5> Gordura: {{ detalhe.gordura }} </h5>
+            </span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </span>
+</div>
