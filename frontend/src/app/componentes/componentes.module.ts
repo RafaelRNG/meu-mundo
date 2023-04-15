@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms'
 
 //Importações do angular material
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -50,7 +51,8 @@ import { FormularioPlanoAlimentarComponent } from './rotas/alimentacao/formulari
     MatChipsModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule
   ],
   exports: [
     CabecalhoComponent,

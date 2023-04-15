@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog'
 
 @Component({
@@ -8,9 +9,18 @@ import { MatDialogRef } from '@angular/material/dialog'
 })
 export class FormularioPlanoAlimentarComponent implements OnInit {
 
-  constructor(public ref: MatDialogRef<FormularioPlanoAlimentarComponent>) { }
+  public formularioPlano!: FormGroup
+
+  constructor(public ref: MatDialogRef<FormularioPlanoAlimentarComponent>, private formulario: FormBuilder) { }
 
   ngOnInit(): void {
+    this.criarFormulario()
   }
 
+  public criarFormulario(): void {
+    this.formularioPlano = this.formulario.group({
+      nome: ['', [Validators.required, Validators.maxLength(30)]],
+      descricao: ['']
+    })
+  }
 }

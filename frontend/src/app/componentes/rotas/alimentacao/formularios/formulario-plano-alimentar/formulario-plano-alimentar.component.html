@@ -1,15 +1,16 @@
 <section>
   <h1 mat-dialog-title>Plano alimentar</h1>
   <mat-dialog-content>
-    <form class="formulario-plano-alimentar">
+    <form class="formulario-plano-alimentar" [formGroup]="this.formularioPlano">
       <mat-form-field appearance="fill">
         <mat-label>Nome</mat-label>
-        <input matInput>
+        <input matInput formControlName="nome">
+        <mat-error>O nome do plano alimentar é obrigatório!</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Descrição</mat-label>
-        <textarea matInput rows="10"></textarea>
+        <textarea matInput rows="10" formControlName="descricao"></textarea>
       </mat-form-field>
     </form>
   </mat-dialog-content>
@@ -18,7 +19,7 @@
       <mat-icon>close</mat-icon>
       Cancelar
     </button>
-    <button mat-button mat-raised-button color="primary" mat-dialog-close cdkFocusInitial>
+    <button mat-button mat-raised-button color="primary" mat-dialog-close [disabled]="this.formularioPlano.invalid">
       <mat-icon>done</mat-icon>
       Salvar
     </button>
