@@ -13,6 +13,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input'
 
 //Importações de componentes
 import { CabecalhoComponent } from './cabecalho/cabecalho.component';
@@ -22,6 +24,7 @@ import { PlanosAlimentaresComponent } from './rotas/alimentacao/planos-alimentar
 import { CardPlanoAlimentarComponent } from './rotas/alimentacao/card-plano-alimentar/card-plano-alimentar.component';
 import { ErroRespostaComponent } from './erro-resposta/erro-resposta.component';
 import { PlanoAlimentarComponent } from './rotas/alimentacao/plano-alimentar/plano-alimentar.component';
+import { FormularioPlanoAlimentarComponent } from './rotas/alimentacao/formularios/formulario-plano-alimentar/formulario-plano-alimentar.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,7 @@ import { PlanoAlimentarComponent } from './rotas/alimentacao/plano-alimentar/pla
     CardPlanoAlimentarComponent,
     ErroRespostaComponent,
     PlanoAlimentarComponent,
+    FormularioPlanoAlimentarComponent,
   ],
   imports: [
     CommonModule,
@@ -44,7 +48,9 @@ import { PlanoAlimentarComponent } from './rotas/alimentacao/plano-alimentar/pla
     MatCardModule,
     MatButtonModule,
     MatChipsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   exports: [
     CabecalhoComponent,

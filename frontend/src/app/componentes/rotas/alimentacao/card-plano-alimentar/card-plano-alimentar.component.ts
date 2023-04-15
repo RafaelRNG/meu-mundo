@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PlanoAlimentar } from '../alimentacao-tipos/PlanoAlimentar.tipo';
+import { PlanoAlimentar } from '../../../../tipos/PlanoAlimentar.tipo';
 
 @Component({
   selector: 'rng-card-plano-alimentar',

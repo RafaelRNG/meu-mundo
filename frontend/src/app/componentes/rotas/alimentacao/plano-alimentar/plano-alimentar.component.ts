@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlimentacaoService } from '../alimentacao.service';
-import { ActivatedRoute, RouterStateSnapshot } from '@angular/router';
-import { PlanoAlimentar } from '../alimentacao-tipos/PlanoAlimentar.tipo';
+import { ActivatedRoute } from '@angular/router';
+import { PlanoAlimentar } from '../../../../tipos/PlanoAlimentar.tipo';
 
 @Component({
   selector: 'rng-plano-alimentar',

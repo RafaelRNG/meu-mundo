@@ -1,4 +1,4 @@
-import { PlanoAlimentar } from "../alimentacao-tipos/PlanoAlimentar.tipo";
+import { PlanoAlimentar } from "../tipos/PlanoAlimentar.tipo";
 
 export const PlanoAlimentarFicticio: PlanoAlimentar[] = [
   {

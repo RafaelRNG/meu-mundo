@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PlanoAlimentar } from './alimentacao-tipos/PlanoAlimentar.tipo';
+import { PlanoAlimentar } from '../../../tipos/PlanoAlimentar.tipo';
 
 @Injectable({
   providedIn: 'root'
