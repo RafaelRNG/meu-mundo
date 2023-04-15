@@ -7,7 +7,7 @@
   <img mat-card-image src="https://cliqueuniao.com.br/wp-content/uploads/2019/04/PLANO-ALIMENTAR.jpg"
     [alt]="this.planoAlimentar.nome" width="200" height="300">
   <mat-card-content>
-    <p>{{ this.planoAlimentar.descricao }}</p>
+    <p class="card-descricao">{{ this.planoAlimentar.descricao }}</p>
   </mat-card-content>
   <mat-card-actions [align]="'end'">
     <a [routerLink]="['/alimentacao', this.planoAlimentar.codigo]" mat-flat-button>

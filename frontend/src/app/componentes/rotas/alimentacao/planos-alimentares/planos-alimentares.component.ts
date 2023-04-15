@@ -35,7 +35,11 @@ export class PlanosAlimentaresComponent implements OnInit {
   public abrirDialogo(): void {
     this.dialog.open(FormularioPlanoAlimentarComponent, {
       width: '100%',
-      maxWidth: '70rem'
+      maxWidth: '70rem',
+    })
+
+    this.dialog.afterAllClosed.subscribe({
+      next: () => this.retornarPlanosAlimentares()
     })
   }
 }

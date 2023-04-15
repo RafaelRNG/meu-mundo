@@ -15,7 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input'
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 //Importações de componentes
 import { CabecalhoComponent } from './cabecalho/cabecalho.component';
@@ -52,7 +53,8 @@ import { FormularioPlanoAlimentarComponent } from './rotas/alimentacao/formulari
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   exports: [
     CabecalhoComponent,

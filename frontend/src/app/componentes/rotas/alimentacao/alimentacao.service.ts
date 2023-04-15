@@ -20,4 +20,8 @@ export class AlimentacaoService {
   public retornarPlanoAlimentar(codigo: number): Observable<PlanoAlimentar> {
     return this.clienteHttp.get<PlanoAlimentar>(`${this.urlApi}planos/${codigo}`)
   }
+
+  public salvarPlanoAlimentar(corpo: PlanoAlimentar): Observable<PlanoAlimentar> {
+    return this.clienteHttp.post<PlanoAlimentar>(`${this.urlApi}planos`, corpo)
+  }
 }
