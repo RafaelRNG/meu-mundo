@@ -3,10 +3,13 @@ package br.com.rng.backend.servicos;
 import br.com.rng.backend.dtos.PlanoAlimentarDTO;
 import br.com.rng.backend.dtos.RetornarPlanoAlimentarDTO;
 import br.com.rng.backend.entidades.PlanoAlimentar;
+import br.com.rng.backend.entidades.Refeicao;
 import br.com.rng.backend.repositorios.PlanoAlimentarRepositorio;
+import br.com.rng.backend.repositorios.RefeicaoRepositorio;
 import br.com.rng.backend.servicos.excecoes.NaoEncontrado;
 import jakarta.persistence.EntityNotFoundException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,6 +22,9 @@ public class PlanoAlimentarServico {
 
     @Autowired
     private PlanoAlimentarRepositorio planoAlimentarRepositorio;
+
+    @Autowired
+    private RefeicaoRepositorio refeicaoRepositorio;
 
     @Transactional(readOnly = true)
     public List<RetornarPlanoAlimentarDTO> buscarPlanosAlimentares() {
@@ -65,7 +71,20 @@ public class PlanoAlimentarServico {
     }
 
     private void copiarDtoParaEntidade(PlanoAlimentarDTO planoAlimentarDTO, PlanoAlimentar planoAlimentar) {
-        planoAlimentar.setNome(planoAlimentarDTO.getNome());
-        planoAlimentar.setDescricao(planoAlimentarDTO.getDescricao());
+        try {
+            planoAlimentar.setNome(planoAlimentarDTO.getNome());
+            planoAlimentar.setDescricao(planoAlimentarDTO.getDescricao());
+            planoAlimentar.getRefeicoes().clear();
+            List<Refeicao> refeicoes = new ArrayList<>();
+
+            for (Long refeicao : planoAlimentarDTO.getRefeicoes()) {
+                refeicoes.add(this.refeicaoRepositorio.getReferenceById(refeicao));
+            }
+
+            planoAlimentar.setRefeicoes(refeicoes);
+
+        } catch (EntityNotFoundException e) {
+            throw new NaoEncontrado("Refeição não encontrado!!");
+        }
     }
 }

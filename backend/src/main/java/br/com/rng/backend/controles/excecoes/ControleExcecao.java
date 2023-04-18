@@ -48,7 +48,7 @@ public class ControleExcecao {
    public ResponseEntity<FormatoPadraoExcecao> violacaoDeIntegridade() {
 
       FormatoPadraoExcecao formato = new FormatoPadraoExcecao(this.codigoHttp,
-            "Erro na tentativa de excluir um objeto que possui relacionamento!");
+            "Erro na tentativa de excluir um objeto que possui relacionamento ou referenciar um objeto que não existe!");
 
       return ResponseEntity.status(this.codigoHttp).body(formato);
    }
