@@ -26,7 +26,6 @@ import { PlanosAlimentaresComponent } from './rotas/alimentacao/planos-alimentar
 import { CardPlanoAlimentarComponent } from './rotas/alimentacao/card-plano-alimentar/card-plano-alimentar.component';
 import { ErroRespostaComponent } from './erro-resposta/erro-resposta.component';
 import { PlanoAlimentarComponent } from './rotas/alimentacao/plano-alimentar/plano-alimentar.component';
-import { FormularioPlanoAlimentarComponent } from './rotas/alimentacao/formularios/formulario-plano-alimentar/formulario-plano-alimentar.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +36,6 @@ import { FormularioPlanoAlimentarComponent } from './rotas/alimentacao/formulari
     CardPlanoAlimentarComponent,
     ErroRespostaComponent,
     PlanoAlimentarComponent,
-    FormularioPlanoAlimentarComponent,
   ],
   imports: [
     CommonModule,
@@ -62,7 +60,7 @@ import { FormularioPlanoAlimentarComponent } from './rotas/alimentacao/formulari
     ApresentacaoComponent,
     PlanosAlimentaresComponent,
     ErroRespostaComponent,
-    PlanoAlimentarComponent
+    PlanoAlimentarComponent,
   ]
 })
 export class ComponentesModule { }
