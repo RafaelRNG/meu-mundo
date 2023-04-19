@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PlanoAlimentar } from '../../../tipos/PlanoAlimentar.tipo';
+import { PlanoAlimentar } from 'src/app/tipos/PlanoAlimentar.tipo';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AlimentacaoService {
+export class PlanoAlimentarService {
 
   private urlApi: string = 'http://localhost:3333/'
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AlimentacaoService } from '../alimentacao.service';
 import { PlanoAlimentar } from '../../../../tipos/PlanoAlimentar.tipo';
 import { PlanoAlimentarFicticio } from '../../../../dados-ficticios/PlanoAlimentar.ficticio';
+import { PlanoAlimentarService } from '../servicos/plano-alimentar.service';
 
 @Component({
   selector: 'rng-planos-alimentares',
@@ -14,7 +14,7 @@ export class PlanosAlimentaresComponent implements OnInit {
 
   public semRespostaApi: boolean = false
 
-  constructor(private alimentacaoServico: AlimentacaoService) { }
+  constructor(private planoAlimentarServico: PlanoAlimentarService) { }
 
   ngOnInit(): void {
     //dado mocado para teste
@@ -23,7 +23,7 @@ export class PlanosAlimentaresComponent implements OnInit {
   }
 
   public retornarPlanosAlimentares() {
-    this.alimentacaoServico.retornarPlanosAlimentares()
+    this.planoAlimentarServico.retornarPlanosAlimentares()
       .subscribe({
         next: (resposta: PlanoAlimentar[]) => this.planosAlimentares = resposta,
         error: () => this.semRespostaApi = true
