@@ -1,0 +1,35 @@
+h1 {
+  margin-top: 1.5rem;
+
+  font-weight: bolder;
+}
+
+.plano-alimentar-formulario-container {
+  display: flex;
+  flex-direction: column;
+
+  padding: 1rem;
+
+  .acao-container {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-bottom: 1.5rem;
+
+    button {
+      margin-left: 1rem;
+    }
+  }
+
+  .lista-refeicoes-container {
+    .refeicao-conteudo {
+      text-align: start;
+    }
+  }
+}
+
+@media (min-width: 70rem) {
+  .plano-alimentar-formulario-container {
+    padding: 3rem;
+  }
+}

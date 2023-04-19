@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
 
 //Importações do angular material
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -16,7 +16,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 //Importações de componentes
 import { CabecalhoComponent } from './cabecalho/cabecalho.component';
@@ -26,6 +26,7 @@ import { PlanosAlimentaresComponent } from './rotas/alimentacao/planos-alimentar
 import { CardPlanoAlimentarComponent } from './rotas/alimentacao/card-plano-alimentar/card-plano-alimentar.component';
 import { ErroRespostaComponent } from './erro-resposta/erro-resposta.component';
 import { PlanoAlimentarComponent } from './rotas/alimentacao/plano-alimentar/plano-alimentar.component';
+import { PlanoAlimentarFormularioComponent } from './rotas/alimentacao/formularios/plano-alimentar-formulario/plano-alimentar-formulario.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { PlanoAlimentarComponent } from './rotas/alimentacao/plano-alimentar/pla
     CardPlanoAlimentarComponent,
     ErroRespostaComponent,
     PlanoAlimentarComponent,
+    PlanoAlimentarFormularioComponent,
   ],
   imports: [
     CommonModule,
@@ -52,7 +54,7 @@ import { PlanoAlimentarComponent } from './rotas/alimentacao/plano-alimentar/pla
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatCheckboxModule
   ],
   exports: [
     CabecalhoComponent,
@@ -61,6 +63,7 @@ import { PlanoAlimentarComponent } from './rotas/alimentacao/plano-alimentar/pla
     PlanosAlimentaresComponent,
     ErroRespostaComponent,
     PlanoAlimentarComponent,
+    PlanoAlimentarFormularioComponent
   ]
 })
 export class ComponentesModule { }

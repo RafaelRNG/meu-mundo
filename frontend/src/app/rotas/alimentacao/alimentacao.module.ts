@@ -6,11 +6,13 @@ import { AlimentacaoComponent } from './alimentacao.component';
 import { CompartilhadosModule } from 'src/app/compartilhados/compartilhados.module';
 import { ComponentesModule } from 'src/app/componentes/componentes.module';
 import { DetalheAlimentacaoComponent } from './detalhe-alimentacao/detalhe-alimentacao.component';
+import { CriarPlanoAlimentarComponent } from './criar-plano-alimentar/criar-plano-alimentar.component';
 
 @NgModule({
   declarations: [
     AlimentacaoComponent,
-    DetalheAlimentacaoComponent
+    DetalheAlimentacaoComponent,
+    CriarPlanoAlimentarComponent,
   ],
   imports: [
     CommonModule,

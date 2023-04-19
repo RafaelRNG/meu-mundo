@@ -8,14 +8,14 @@ export type PlanoAlimentar = {
 }
 
 export type RefeicaoDetalhe = {
-  codigo: number
-  nome: string
-  descricao: string
-  horario: string
-  minimoCarbo: number
-  minimoProteina: number
-  minimoGordura: number
-  detalhes: DetalhesDoAlimento[]
+  codigo?: number
+  nome?: string
+  descricao?: string
+  horario?: string
+  minimoCarbo?: number
+  minimoProteina?: number
+  minimoGordura?: number
+  detalhes?: DetalhesDoAlimento[]
 }
 
 export type DetalhesDoAlimento = {

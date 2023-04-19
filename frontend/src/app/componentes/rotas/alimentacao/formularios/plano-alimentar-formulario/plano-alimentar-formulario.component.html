@@ -1,0 +1,30 @@
+<h1>Criar plano Alimentar</h1>
+
+<form class="plano-alimentar-formulario-container">
+  <span class="acao-container">
+    <a [routerLink]="['/alimentacao']" mat-button mat-raised-button color="warn">
+      <mat-icon>close</mat-icon>
+      Cancelar
+    </a>
+    <button mat-button mat-raised-button color="primary">
+      <mat-icon>check</mat-icon>
+      Salvar
+    </button>
+  </span>
+  <mat-form-field appearance="outline">
+    <mat-label>Nome</mat-label>
+    <input type="text" matInput>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Descrição</mat-label>
+    <textarea matInput rows="10"></textarea>
+  </mat-form-field>
+
+  <mat-selection-list class="lista-refeicoes-container">
+    <mat-list-option class="refeicao-conteudo" *ngFor="let refeicao of this.refeicoes">
+      {{refeicao.nome}}
+    </mat-list-option>
+  </mat-selection-list>
+
+</form>
