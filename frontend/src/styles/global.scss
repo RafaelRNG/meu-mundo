@@ -23,14 +23,14 @@ body {
   margin: 0 auto;
 }
 
-.mensagem-sucesso {
-  background-color: #22c55e !important;
-  color: #fafafa;
-}
-
 .mensagem-sucesso,
 .mensagem-erro {
   margin-top: 8rem !important;
+}
+
+.mensagem-sucesso {
+  background-color: #22c55e !important;
+  color: #fafafa;
 }
 
 .mensagem-erro {

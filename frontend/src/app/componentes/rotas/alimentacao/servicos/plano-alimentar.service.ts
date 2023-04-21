@@ -16,7 +16,6 @@ export class PlanoAlimentarService {
     return this.clienteHttp.get<PlanoAlimentar[]>(`${this.urlApi}planos`)
   }
 
-  //adicionar tipo em plano alimentar quando começar a criar as rotas das outras entidades
   public retornarPlanoAlimentar(codigo: number): Observable<PlanoAlimentar> {
     return this.clienteHttp.get<PlanoAlimentar>(`${this.urlApi}planos/${codigo}`)
   }
