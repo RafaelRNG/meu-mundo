@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RefeicaoDetalhe } from 'src/app/tipos/PlanoAlimentar.tipo';
+import { RefeicaoService } from '../../servicos/refeicao.service';
 
 @Component({
   selector: 'rng-plano-alimentar-formulario',
@@ -8,16 +9,13 @@ import { RefeicaoDetalhe } from 'src/app/tipos/PlanoAlimentar.tipo';
 })
 export class PlanoAlimentarFormularioComponent implements OnInit {
 
-  refeicoes: RefeicaoDetalhe[] = [
-    { codigo: 1, nome: 'Café da manhã' },
-    { codigo: 2, nome: 'Almoço' },
-    { codigo: 3, nome: 'Janta' },
-  ]
+  refeicoes: RefeicaoDetalhe[] = []
 
-  constructor() {
-
-  }
+  constructor(private refeicaoServico: RefeicaoService) { }
 
   ngOnInit(): void {
+    this.refeicaoServico.retornarRefeicoes().subscribe({
+      next: resposta => this.refeicoes = resposta
+    })
   }
 }
