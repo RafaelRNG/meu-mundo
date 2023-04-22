@@ -1,6 +1,5 @@
 //Importações do angular
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 //Importações do angular material
 import { MatButtonModule } from '@angular/material/button';
@@ -14,16 +13,15 @@ import { ContainerComponent } from './container/container.component';
 
 @NgModule({
   declarations: [
-    ContainerComponent
+    ContainerComponent,
   ],
   imports: [
-    CommonModule,
     ComponentesModule,
     MatButtonModule,
     MatIconModule
   ],
   exports: [
-    ContainerComponent
+    ContainerComponent,
   ]
 })
 export class CompartilhadosModule { }

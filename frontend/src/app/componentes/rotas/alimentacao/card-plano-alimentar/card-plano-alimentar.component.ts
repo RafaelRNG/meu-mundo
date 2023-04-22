@@ -14,5 +14,4 @@ export class CardPlanoAlimentarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

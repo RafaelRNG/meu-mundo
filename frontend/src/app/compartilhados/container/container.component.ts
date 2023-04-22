@@ -14,7 +14,6 @@ export class ContainerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   public mudarIsAberto(): void {
     this.isAberto = !this.isAberto
   }

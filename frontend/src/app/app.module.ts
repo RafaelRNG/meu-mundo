@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //Importações de modulos
 import { AppRoutingModule } from './app-routing.module';
 import { CompartilhadosModule } from './compartilhados/compartilhados.module';
+import { ComponentesModule } from './componentes/componentes.module';
 
 //Importações de componentes
 import { AppComponent } from './app.component';
@@ -20,7 +21,8 @@ import { InicioComponent } from './rotas/inicio/inicio.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CompartilhadosModule
+    CompartilhadosModule,
+    ComponentesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

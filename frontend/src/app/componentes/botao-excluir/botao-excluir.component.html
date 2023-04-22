@@ -1,0 +1,13 @@
+<button mat-button color="warn" (click)="this.confirmarDelecao()" *ngIf="!this.confirmar">
+  excluir
+  <mat-icon>delete</mat-icon>
+</button>
+
+<span class="confirmacao-container" *ngIf="this.confirmar">
+  <button mat-button mat-raised-button color="warn" (click)="this.confirmarDelecao()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <button mat-button mat-raised-button color="primary" (click)="this.deletarItem()">
+    <mat-icon>done</mat-icon>
+  </button>
+</span>

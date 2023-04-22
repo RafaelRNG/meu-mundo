@@ -13,6 +13,15 @@
   </section>
   <span>
 
+    <span class="acoes-container">
+      <rng-botao-excluir [informacoes]="{
+        rota: 'planos',
+        codigo: this.planoAlimentar.codigo,
+        mensagemSucesso: 'Plano alimentar excluido com sucesso!',
+        mensagemErro: 'Não foi possível excluír o plano alimentar!'
+      }"></rng-botao-excluir>
+    </span>
+
     <mat-card class="card-informacao" *ngFor="let refeicao of this.planoAlimentar?.refeicoes">
       <mat-card-header class="card-titulo">
         <mat-card-title>{{ refeicao.nome }}</mat-card-title>
