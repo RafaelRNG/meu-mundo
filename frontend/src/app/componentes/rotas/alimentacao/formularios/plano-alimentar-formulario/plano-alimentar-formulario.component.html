@@ -6,10 +6,16 @@
       <mat-icon>close</mat-icon>
       Cancelar
     </a>
-    <button mat-button mat-raised-button color="primary" [disabled]="this.planoFormulario.invalid"
-      (click)="this.salvarPlanoAlimentar()">
+    <button *ngIf="!this.rotaCodigo" mat-button mat-raised-button color="primary"
+      [disabled]="this.planoFormulario.invalid" (click)="this.salvarPlanoAlimentar()">
       <mat-icon>check</mat-icon>
       Salvar
+    </button>
+
+    <button *ngIf="this.rotaCodigo" mat-button mat-raised-button color="primary"
+      [disabled]="this.planoFormulario.invalid" (click)="this.alterarPlanoAlimentar()">
+      <mat-icon>edit</mat-icon>
+      Alterar
     </button>
   </span>
   <mat-form-field appearance="outline">
@@ -23,7 +29,7 @@
   </mat-form-field>
 
   <mat-selection-list class="lista-refeicoes-container" formControlName="refeicoes">
-    <mat-list-option color="primary" class="refeicao-conteudo" *ngFor="let refeicao of this.refeicoes"
+    <mat-list-option #opicao color="primary" class="refeicao-conteudo" *ngFor="let refeicao of this.refeicoes"
       value="{{refeicao.codigo}}">
       {{refeicao.nome}}
     </mat-list-option>

@@ -14,6 +14,10 @@
   <span>
 
     <span class="acoes-container">
+      <a routerLink="/alimentacao/alterar/{{this.planoAlimentar.codigo}}" mat-button color="accent">
+        Alterar
+        <mat-icon>edit</mat-icon>
+      </a>
       <rng-botao-excluir [informacoes]="{
         rota: 'planos',
         codigo: this.planoAlimentar.codigo,

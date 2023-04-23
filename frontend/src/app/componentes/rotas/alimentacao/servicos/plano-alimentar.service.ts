@@ -23,4 +23,8 @@ export class PlanoAlimentarService {
   public salvarPlanoAlimentar(corpo: PlanoAlimentar): Observable<PlanoAlimentar> {
     return this.clienteHttp.post<PlanoAlimentar>(`${this.urlApi}planos`, corpo)
   }
+
+  public alterarPlanoAlimentar(codigo: number, corpo: PlanoAlimentar): Observable<PlanoAlimentar> {
+    return this.clienteHttp.put<PlanoAlimentar>(`${this.urlApi}planos/${codigo}`, corpo)
+  }
 }

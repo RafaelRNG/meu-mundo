@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RefeicaoDetalhe } from 'src/app/tipos/PlanoAlimentar.tipo';
+import { PlanoAlimentar, RefeicaoDetalhe } from 'src/app/tipos/PlanoAlimentar.tipo';
 import { RefeicaoService } from '../../servicos/refeicao.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PlanoAlimentarService } from '../../servicos/plano-alimentar.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CompartilhadosService } from 'src/app/compartilhados/compartilhados.service';
 
 @Component({
@@ -15,6 +14,7 @@ import { CompartilhadosService } from 'src/app/compartilhados/compartilhados.ser
 export class PlanoAlimentarFormularioComponent implements OnInit {
 
   public planoFormulario!: FormGroup
+  public rotaCodigo!: number
 
   refeicoes: RefeicaoDetalhe[] = []
 
@@ -22,14 +22,16 @@ export class PlanoAlimentarFormularioComponent implements OnInit {
     private planoAlimentarServico: PlanoAlimentarService,
     private planoConstrutor: FormBuilder,
     private compartilhadosServico: CompartilhadosService,
-    private rota: Router) { }
+    private rota: Router,
+    private rotaAtiva: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.construirFormulario()
     this.retornarRefeicoes()
+    this.carregarCodigoEalterarValorFormulario()
   }
 
-  public salvarPlanoAlimentar() {
+  public salvarPlanoAlimentar(): void {
     const corpoPlanoALimentar = this.planoFormulario.value
     this.planoAlimentarServico.salvarPlanoAlimentar(corpoPlanoALimentar)
       .subscribe({
@@ -41,6 +43,33 @@ export class PlanoAlimentarFormularioComponent implements OnInit {
           this.compartilhadosServico.ativarSnackBar('Erro ao tentar salvar plano alimentar!', 'mensagem-erro')
         }
       })
+  }
+
+  public alterarPlanoAlimentar(): void {
+    this.planoAlimentarServico.alterarPlanoAlimentar(this.rotaCodigo, this.planoFormulario.value)
+      .subscribe({
+        next: () => {
+          this.compartilhadosServico.ativarSnackBar('Plano alimentar alterado com sucesso!', 'mensagem-sucesso')
+          this.rota.navigate([`/alimentacao/${this.rotaCodigo}`])
+        },
+        error: () => {
+          this.compartilhadosServico.ativarSnackBar('Erro ao tentar salvar plano alimentar!', 'mensagem-erro')
+        }
+      })
+  }
+
+  private carregarCodigoEalterarValorFormulario() {
+    this.rotaAtiva.params.subscribe(rota => this.rotaCodigo = rota['codigo'])
+
+    if (this.rotaCodigo) {
+      this.planoAlimentarServico.retornarPlanoAlimentar(this.rotaCodigo)
+        .subscribe({
+          next: (planoAlimentar: PlanoAlimentar) => {
+            this.planoFormulario.controls['nome'].setValue(planoAlimentar.nome)
+            this.planoFormulario.controls['descricao'].setValue(planoAlimentar.descricao)
+          }
+        })
+    }
   }
 
   private construirFormulario(): void {

@@ -21,7 +21,7 @@ export class PlanoAlimentarComponent implements OnInit {
 
   public retornarPlanoAlimentar() {
 
-    this.router.params.subscribe(params => this.codigo = params['codigo'])
+    this.router.params.subscribe(parametros => this.codigo = parametros['codigo'])
 
     this.planoAlimentarServico.retornarPlanoAlimentar(this.codigo)
       .subscribe({
