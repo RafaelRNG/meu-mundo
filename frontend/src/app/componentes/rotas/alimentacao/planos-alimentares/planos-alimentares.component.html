@@ -3,6 +3,10 @@
   Criar plano
 </a>
 
+<div *ngIf="this.carregando">
+  <rng-carregando></rng-carregando>
+</div>
+
 <section *ngIf="!this.semRespostaApi" class="planos-container">
   <div class="plano-card" *ngFor="let plano of this.planosAlimentares">
     <rng-card-plano-alimentar [planoAlimentar]="plano"></rng-card-plano-alimentar>

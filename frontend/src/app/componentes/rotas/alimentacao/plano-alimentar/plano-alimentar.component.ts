@@ -13,6 +13,9 @@ export class PlanoAlimentarComponent implements OnInit {
   public codigo!: number
   public planoAlimentar!: PlanoAlimentar
 
+  public semRespostaApi: boolean = false
+  public carregando: boolean = true
+
   constructor(private router: ActivatedRoute, private planoAlimentarServico: PlanoAlimentarService) { }
 
   ngOnInit(): void {
@@ -27,8 +30,12 @@ export class PlanoAlimentarComponent implements OnInit {
       .subscribe({
         next: resposta => {
           this.planoAlimentar = resposta
+          this.carregando = false
         },
-        error: () => console.log('deu ruim!')
+        error: () => {
+          this.semRespostaApi = true
+          this.carregando = false
+        }
       })
   }
 }

@@ -59,3 +59,11 @@
     </mat-card>
   </span>
 </div>
+
+<div *ngIf="this.carregando">
+  <rng-carregando></rng-carregando>
+</div>
+
+<div *ngIf="this.semRespostaApi">
+  <rng-erro-resposta></rng-erro-resposta>
+</div>
