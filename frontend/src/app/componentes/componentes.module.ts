@@ -18,6 +18,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 //Importações de componentes
 import { CabecalhoComponent } from './cabecalho/cabecalho.component';
@@ -29,6 +30,7 @@ import { ErroRespostaComponent } from './erro-resposta/erro-resposta.component';
 import { PlanoAlimentarComponent } from './rotas/alimentacao/plano-alimentar/plano-alimentar.component';
 import { PlanoAlimentarFormularioComponent } from './rotas/alimentacao/formularios/plano-alimentar-formulario/plano-alimentar-formulario.component';
 import { BotaoExcluirComponent } from './botao-excluir/botao-excluir.component';
+import { CarregandoComponent } from './carregando/carregando.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { BotaoExcluirComponent } from './botao-excluir/botao-excluir.component';
     PlanoAlimentarComponent,
     PlanoAlimentarFormularioComponent,
     BotaoExcluirComponent,
+    CarregandoComponent,
   ],
   imports: [
     CommonModule,
@@ -58,7 +61,8 @@ import { BotaoExcluirComponent } from './botao-excluir/botao-excluir.component';
     MatInputModule,
     ReactiveFormsModule,
     MatCheckboxModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     CabecalhoComponent,

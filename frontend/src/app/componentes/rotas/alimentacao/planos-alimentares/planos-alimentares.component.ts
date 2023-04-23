@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlanoAlimentar } from '../../../../tipos/PlanoAlimentar.tipo';
-import { PlanoAlimentarFicticio } from '../../../../dados-ficticios/PlanoAlimentar.ficticio';
+//import { PlanoAlimentarFicticio } from '../../../../dados-ficticios/PlanoAlimentar.ficticio';
 import { PlanoAlimentarService } from '../servicos/plano-alimentar.service';
 
 @Component({
@@ -13,6 +13,7 @@ export class PlanosAlimentaresComponent implements OnInit {
   public planosAlimentares!: PlanoAlimentar[]
 
   public semRespostaApi: boolean = false
+  public carregando: boolean = true
 
   constructor(private planoAlimentarServico: PlanoAlimentarService) { }
 
@@ -25,8 +26,14 @@ export class PlanosAlimentaresComponent implements OnInit {
   public retornarPlanosAlimentares() {
     this.planoAlimentarServico.retornarPlanosAlimentares()
       .subscribe({
-        next: (resposta: PlanoAlimentar[]) => this.planosAlimentares = resposta,
-        error: () => this.semRespostaApi = true
+        next: (resposta: PlanoAlimentar[]) => {
+          this.planosAlimentares = resposta
+          this.carregando = false
+        },
+        error: () => {
+          this.semRespostaApi = true
+          this.carregando = false
+        }
       })
   }
 }
