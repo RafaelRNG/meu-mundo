@@ -1,7 +1,6 @@
-<a [routerLink]="['criar']" mat-flat-button color="primary" class="botao-criar-plano">
-  <mat-icon>add</mat-icon>
-  Criar plano
-</a>
+<span class="menu-container">
+  <rng-menu-criar-entidades></rng-menu-criar-entidades>
+</span>
 
 <div *ngIf="this.carregando">
   <rng-carregando></rng-carregando>

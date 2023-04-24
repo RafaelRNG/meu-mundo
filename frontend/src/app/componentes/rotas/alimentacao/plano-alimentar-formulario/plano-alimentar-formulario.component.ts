@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PlanoAlimentar, RefeicaoDetalhe } from 'src/app/tipos/PlanoAlimentar.tipo';
-import { RefeicaoService } from '../../servicos/refeicao.service';
+import { RefeicaoService } from '../servicos/refeicao.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PlanoAlimentarService } from '../../servicos/plano-alimentar.service';
+import { PlanoAlimentarService } from '../servicos/plano-alimentar.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompartilhadosService } from 'src/app/compartilhados/compartilhados.service';
 

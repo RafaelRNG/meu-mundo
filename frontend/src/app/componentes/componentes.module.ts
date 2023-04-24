@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatMenuModule } from '@angular/material/menu';
 
 //Importações de componentes
 import { CabecalhoComponent } from './cabecalho/cabecalho.component';
@@ -28,9 +29,11 @@ import { PlanosAlimentaresComponent } from './rotas/alimentacao/planos-alimentar
 import { CardPlanoAlimentarComponent } from './rotas/alimentacao/card-plano-alimentar/card-plano-alimentar.component';
 import { ErroRespostaComponent } from './erro-resposta/erro-resposta.component';
 import { PlanoAlimentarComponent } from './rotas/alimentacao/plano-alimentar/plano-alimentar.component';
-import { PlanoAlimentarFormularioComponent } from './rotas/alimentacao/formularios/plano-alimentar-formulario/plano-alimentar-formulario.component';
+import { PlanoAlimentarFormularioComponent } from './rotas/alimentacao/plano-alimentar-formulario/plano-alimentar-formulario.component';
 import { BotaoExcluirComponent } from './botao-excluir/botao-excluir.component';
 import { CarregandoComponent } from './carregando/carregando.component';
+import { MenuCriarEntidadesComponent } from './rotas/alimentacao/menu-criar-entidades/menu-criar-entidades.component';
+import { AlimentoComponent } from './rotas/alimentacao/alimento/alimento.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,8 @@ import { CarregandoComponent } from './carregando/carregando.component';
     PlanoAlimentarFormularioComponent,
     BotaoExcluirComponent,
     CarregandoComponent,
+    MenuCriarEntidadesComponent,
+    AlimentoComponent,
   ],
   imports: [
     CommonModule,
@@ -63,6 +68,7 @@ import { CarregandoComponent } from './carregando/carregando.component';
     MatCheckboxModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
+    MatMenuModule
   ],
   exports: [
     CabecalhoComponent,

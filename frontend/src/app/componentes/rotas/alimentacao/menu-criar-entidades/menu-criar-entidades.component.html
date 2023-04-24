@@ -1,0 +1,14 @@
+<button mat-button mat-raised-button color="primary" [matMenuTriggerFor]="menu">
+  <mat-icon>add</mat-icon>
+  Criar
+</button>
+
+<mat-menu #menu="matMenu">
+  <a [routerLink]="['criar']" mat-menu-item>
+    Plano alimentar
+  </a>
+
+  <button (click)="this.abrirDialogoAlimento()" mat-menu-item>
+    Alimento
+  </button>
+</mat-menu>
