@@ -12,6 +12,10 @@ export class AlimentoService {
 
   constructor(private clienteHttp: HttpClient) { }
 
+  public retornarAlimentos(): Observable<AlimentoDetalhe[]> {
+    return this.clienteHttp.get<AlimentoDetalhe[]>(`${this.urlApi}alimentos`)
+  }
+
   public salvarAlimento(corpo: AlimentoDetalhe): Observable<AlimentoDetalhe> {
     return this.clienteHttp.post<AlimentoDetalhe>(`${this.urlApi}alimentos`, corpo)
   }

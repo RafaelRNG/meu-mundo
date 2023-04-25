@@ -20,6 +20,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
 
 //Importações de componentes
 import { CabecalhoComponent } from './cabecalho/cabecalho.component';
@@ -34,6 +35,7 @@ import { BotaoExcluirComponent } from './botao-excluir/botao-excluir.component';
 import { CarregandoComponent } from './carregando/carregando.component';
 import { MenuCriarEntidadesComponent } from './rotas/alimentacao/menu-criar-entidades/menu-criar-entidades.component';
 import { AlimentoComponent } from './rotas/alimentacao/alimento/alimento.component';
+import { ListaAlimentoComponent } from './rotas/alimentacao/lista-alimento/lista-alimento.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import { AlimentoComponent } from './rotas/alimentacao/alimento/alimento.compone
     CarregandoComponent,
     MenuCriarEntidadesComponent,
     AlimentoComponent,
+    ListaAlimentoComponent,
   ],
   imports: [
     CommonModule,
@@ -68,7 +71,8 @@ import { AlimentoComponent } from './rotas/alimentacao/alimento/alimento.compone
     MatCheckboxModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule
   ],
   exports: [
     CabecalhoComponent,

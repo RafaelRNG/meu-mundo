@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>Alimento</h1>
-<div mat-dialog-content>
 
+<div mat-dialog-content>
   <span class="acao-container">
     <button mat-button mat-raised-button color="primary" mat-dialog-close cdkFocusInitial
       (click)="this.salvarAlimento()">
@@ -15,4 +15,8 @@
       <input matInput type="text" formControlName="nome">
     </mat-form-field>
   </form>
+
+  <section>
+    <rng-lista-alimento></rng-lista-alimento>
+  </section>
 </div>

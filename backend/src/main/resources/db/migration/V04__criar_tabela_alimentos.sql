@@ -6,3 +6,4 @@ CREATE TABLE IF NOT EXISTS tb_alimentos(
 INSERT INTO tb_alimentos(nome) VALUES('Frango');
 INSERT INTO tb_alimentos(nome) VALUES('Aveia flocado');
 INSERT INTO tb_alimentos(nome) VALUES('Pão');
+INSERT INTO tb_alimentos(nome) VALUES('Arroz');

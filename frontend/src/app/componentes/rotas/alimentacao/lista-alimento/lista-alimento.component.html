@@ -1,0 +1,30 @@
+<h3 class="lista-aliment-title">Lista de alimentos</h3>
+<table class="tabela-alimento-container" mat-table [dataSource]="this.alimentos">
+  <ng-container matColumnDef="nome">
+    <th mat-header-cell *matHeaderCellDef>
+      Nome
+    </th>
+    <td mat-cell *matCellDef="let alimento">
+      {{alimento.nome}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="acao">
+    <th mat-header-cell *matHeaderCellDef>
+      Ações
+    </th>
+    <td mat-cell *matCellDef="let alimento">
+      <!--
+              <rng-botao-excluir [informacoes]="{
+          rota: 'alimentos',
+          codigo: alimento.codigo,
+          mensagemSucesso: 'Alimento excluído com sucesso!',
+          mensagemErro: 'Não foi possível excluir, alimento possui relacionamento!'
+        }"></rng-botao-excluir>
+      -->
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="this.cabecalho"></tr>
+  <tr mat-row *matRowDef="let row; columns cabecalho;"></tr>
+</table>
