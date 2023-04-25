@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AlimentoService } from '../servicos/alimento.service';
 import { CompartilhadosService } from 'src/app/compartilhados/compartilhados.service';
+import { AlimentoDetalhe } from 'src/app/tipos/PlanoAlimentar.tipo';
 
 @Component({
   selector: 'rng-alimento',
@@ -11,7 +12,10 @@ import { CompartilhadosService } from 'src/app/compartilhados/compartilhados.ser
 })
 export class AlimentoComponent implements OnInit {
 
+  public temCodigo?: number
+  public praAlterar: boolean = false
   public alimentoFormulario!: FormGroup
+  public alimentos!: AlimentoDetalhe[]
 
   constructor(public ref: MatDialogRef<AlimentoComponent>,
     private alimentoConstrutor: FormBuilder,
@@ -20,9 +24,11 @@ export class AlimentoComponent implements OnInit {
 
   ngOnInit(): void {
     this.criarFormularioAlimento()
+    this.alterarAlimento()
+    this.retornarAlimentos()
   }
 
-  public salvarAlimento() {
+  public salvarAlimento(): void {
     const corpoAlimento = this.alimentoFormulario.value
     this.alimentoServico.salvarAlimento(corpoAlimento)
       .subscribe({
@@ -31,9 +37,47 @@ export class AlimentoComponent implements OnInit {
       })
   }
 
+  public alterarAlimento() {
+    if (this.temCodigo) {
+      const corpoAlimento = this.alimentoFormulario.value
+      this.alimentoServico.alterarAlimento(this.temCodigo, corpoAlimento)
+        .subscribe({
+          next: () => {
+            this.retornarAlimentos()
+            this.cancelarAlteracao()
+            this.compartilhadosServico.ativarSnackBar('Alimento alterado com sucesso!', 'mensagem-sucesso')
+          },
+          error: () => this.compartilhadosServico.ativarSnackBar('Erro ao tentar alterar alimento!', 'mensagem-erro')
+        })
+    }
+  }
+
+  public carregarAlimentoEmitido(alimento: AlimentoDetalhe): void {
+    this.temCodigo = alimento.codigo
+    if (this.temCodigo) {
+      this.praAlterar = true
+      this.alimentoFormulario.controls['nome'].setValue(alimento.nome)
+    }
+  }
+
+  public cancelarAlteracao(): void {
+    this.temCodigo = undefined
+    this.praAlterar = false
+    this.alimentoFormulario.controls['nome'].setValue(' ')
+  }
+
   private criarFormularioAlimento(): void {
     this.alimentoFormulario = this.alimentoConstrutor.group({
       nome: ['', [Validators.required, Validators.maxLength(200)]]
     })
+  }
+
+  private retornarAlimentos(): void {
+    this.alimentoServico.retornarAlimentos()
+      .subscribe({
+        next: resposta => {
+          this.alimentos = resposta
+        }
+      })
   }
 }

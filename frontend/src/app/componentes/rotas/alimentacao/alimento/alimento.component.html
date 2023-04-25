@@ -3,9 +3,19 @@
 <div mat-dialog-content>
   <span class="acao-container">
     <button mat-button mat-raised-button color="primary" mat-dialog-close cdkFocusInitial
-      (click)="this.salvarAlimento()">
+      (click)="this.salvarAlimento()" *ngIf="!this.praAlterar">
       <mat-icon>check</mat-icon>
       Salvar
+    </button>
+
+    <button mat-button mat-raised-button color="warn" (click)="this.cancelarAlteracao()" *ngIf="this.praAlterar">
+      <mat-icon>close</mat-icon>
+      Cancelar
+    </button>
+
+    <button mat-button mat-raised-button color="primary" *ngIf="this.praAlterar" (click)="this.alterarAlimento()">
+      <mat-icon>edit</mat-icon>
+      Alterar
     </button>
   </span>
 
@@ -17,6 +27,7 @@
   </form>
 
   <section>
-    <rng-lista-alimento></rng-lista-alimento>
+    <rng-lista-alimento (alimentoEmitido)="this.carregarAlimentoEmitido($event)"
+      [alimentos]="this.alimentos"></rng-lista-alimento>
   </section>
 </div>

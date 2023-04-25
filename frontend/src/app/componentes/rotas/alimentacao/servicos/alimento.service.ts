@@ -19,4 +19,8 @@ export class AlimentoService {
   public salvarAlimento(corpo: AlimentoDetalhe): Observable<AlimentoDetalhe> {
     return this.clienteHttp.post<AlimentoDetalhe>(`${this.urlApi}alimentos`, corpo)
   }
+
+  public alterarAlimento(codigo: number, corpo: AlimentoDetalhe): Observable<AlimentoDetalhe> {
+    return this.clienteHttp.put<AlimentoDetalhe>(`${this.urlApi}alimentos/${codigo}`, corpo)
+  }
 }
