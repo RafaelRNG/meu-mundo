@@ -14,6 +14,7 @@ export class AlimentoComponent implements OnInit {
 
   public temCodigo?: number
   public praAlterar: boolean = false
+  public carregando: boolean = true
   public alimentoFormulario!: FormGroup
   public alimentos!: AlimentoDetalhe[]
 
@@ -32,7 +33,11 @@ export class AlimentoComponent implements OnInit {
     const corpoAlimento = this.alimentoFormulario.value
     this.alimentoServico.salvarAlimento(corpoAlimento)
       .subscribe({
-        next: () => this.compartilhadosServico.ativarSnackBar('Alimento salvo com sucesso!', 'mensagem-sucesso'),
+        next: () => {
+          this.compartilhadosServico.ativarSnackBar('Alimento salvo com sucesso!', 'mensagem-sucesso')
+          this.alimentoFormulario.reset()
+          this.retornarAlimentos()
+        },
         error: () => this.compartilhadosServico.ativarSnackBar('Erro ao tentar salvar alimento!', 'mensagem-erro')
       })
   }
@@ -72,11 +77,16 @@ export class AlimentoComponent implements OnInit {
     })
   }
 
-  private retornarAlimentos(): void {
+  public retornarAlimentos(): void {
     this.alimentoServico.retornarAlimentos()
       .subscribe({
         next: resposta => {
+          this.carregando = false
           this.alimentos = resposta
+        },
+        error: () => {
+          this.carregando = false
+          this.compartilhadosServico.ativarSnackBar('Erro ao tentar carregar a lista de alimentos!', 'mensagem-erro')
         }
       })
   }

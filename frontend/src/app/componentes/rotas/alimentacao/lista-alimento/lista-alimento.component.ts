@@ -12,6 +12,7 @@ export class ListaAlimentoComponent implements OnInit {
   @Input() public alimentos!: AlimentoDetalhe[]
 
   @Output() public alimentoEmitido: EventEmitter<AlimentoDetalhe> = new EventEmitter<AlimentoDetalhe>()
+  @Output() public recarregar: EventEmitter<any> = new EventEmitter<any>()
 
   constructor() { }
 
@@ -20,5 +21,9 @@ export class ListaAlimentoComponent implements OnInit {
 
   public emitirAlimento(alimento: AlimentoDetalhe) {
     this.alimentoEmitido.emit(alimento)
+  }
+
+  public executarRecarregamento() {
+    this.recarregar.emit()
   }
 }

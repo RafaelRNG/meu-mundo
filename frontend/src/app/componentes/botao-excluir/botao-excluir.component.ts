@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ComponentesService } from '../componentes.service';
 import { Router } from '@angular/router';
 
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class BotaoExcluirComponent implements OnInit {
 
   @Input() public informacoes!: { rota: string, codigo: number, mensagemSucesso: string, mensagemErro: string }
+  @Output() public executarAlgo: EventEmitter<any> = new EventEmitter<any>()
   public confirmar: boolean = false
 
   constructor(private componentService: ComponentesService, private rota: Router) { }
@@ -25,7 +26,11 @@ export class BotaoExcluirComponent implements OnInit {
     this.componentService.excluirItem(this.informacoes.rota, this.informacoes.codigo, this.informacoes.mensagemSucesso, this.informacoes.mensagemErro)
       .subscribe({
         next: () => {
+          this.executarAlgo.emit()
           this.rota.navigate(['/alimentacao'])
+        },
+        error: () => {
+          this.confirmarDelecao()
         }
       })
   }

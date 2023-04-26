@@ -22,12 +22,13 @@
   <form [formGroup]="this.alimentoFormulario">
     <mat-form-field appearance="outline" class="nome-alimento">
       <mat-label>Nome</mat-label>
-      <input matInput type="text" formControlName="nome">
+      <input matInput type="text" formControlName="nome" (keydown.enter)="this.salvarAlimento()">
     </mat-form-field>
   </form>
 
   <section>
-    <rng-lista-alimento (alimentoEmitido)="this.carregarAlimentoEmitido($event)"
+    <rng-lista-alimento (alimentoEmitido)="this.carregarAlimentoEmitido($event)" (recarregar)="this.retornarAlimentos()"
       [alimentos]="this.alimentos"></rng-lista-alimento>
+    <rng-carregando *ngIf="this.carregando"></rng-carregando>
   </section>
 </div>
