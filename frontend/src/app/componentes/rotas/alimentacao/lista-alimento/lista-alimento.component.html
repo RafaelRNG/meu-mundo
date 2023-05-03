@@ -1,11 +1,11 @@
-<h3 class="lista-aliment-title">Lista de alimentos</h3>
+<h3 class="lista-titulo">Lista de alimentos</h3>
 <table class="tabela-alimento-container" mat-table [dataSource]="this.alimentos">
   <ng-container matColumnDef="nome">
     <th mat-header-cell *matHeaderCellDef>
       Nome
     </th>
     <td mat-cell *matCellDef="let alimento">
-      {{alimento.nome}}
+      {{ alimento.nome }}
     </td>
   </ng-container>
 

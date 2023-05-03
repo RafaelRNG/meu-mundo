@@ -8,9 +8,9 @@ import { AlimentoDetalhe } from 'src/app/tipos/PlanoAlimentar.tipo';
 })
 export class ListaAlimentoComponent implements OnInit {
 
-  public cabecalho = ['nome', 'acao']
-  @Input() public alimentos!: AlimentoDetalhe[]
+  public cabecalho: string[] = ['nome', 'acao']
 
+  @Input() public alimentos!: AlimentoDetalhe[]
   @Output() public alimentoEmitido: EventEmitter<AlimentoDetalhe> = new EventEmitter<AlimentoDetalhe>()
   @Output() public recarregar: EventEmitter<any> = new EventEmitter<any>()
 

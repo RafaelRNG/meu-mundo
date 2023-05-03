@@ -49,6 +49,19 @@ body {
   }
 }
 
+.lista-titulo {
+  text-align: center;
+  font-size: 1.9rem;
+
+  margin-top: 1.5rem;
+}
+
+.tabela-alimento-container {
+  width: 100%;
+
+  border-top: solid 1px #fafafa;
+}
+
 input.sem-contador::-webkit-outer-spin-button,
 input.sem-contador::-webkit-inner-spin-button {
   display: none;

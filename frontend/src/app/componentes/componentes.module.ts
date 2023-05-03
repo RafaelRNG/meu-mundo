@@ -38,6 +38,7 @@ import { MenuCriarEntidadesComponent } from './rotas/alimentacao/menu-criar-enti
 import { AlimentoComponent } from './rotas/alimentacao/alimento/alimento.component';
 import { ListaAlimentoComponent } from './rotas/alimentacao/lista-alimento/lista-alimento.component';
 import { DetalhesAlimentosComponent } from './rotas/alimentacao/detalhes-alimentos/detalhes-alimentos.component';
+import { ListaDetalhesAlimentosComponent } from './rotas/alimentacao/lista-detalhes-alimentos/lista-detalhes-alimentos.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { DetalhesAlimentosComponent } from './rotas/alimentacao/detalhes-aliment
     AlimentoComponent,
     ListaAlimentoComponent,
     DetalhesAlimentosComponent,
+    ListaDetalhesAlimentosComponent,
   ],
   imports: [
     CommonModule,
