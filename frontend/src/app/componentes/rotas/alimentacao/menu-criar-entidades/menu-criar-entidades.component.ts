@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AlimentoComponent } from '../alimento/alimento.component';
+import { DetalhesAlimentosComponent } from '../detalhes-alimentos/detalhes-alimentos.component';
 
 @Component({
   selector: 'rng-menu-criar-entidades',
@@ -14,8 +15,14 @@ export class MenuCriarEntidadesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public abrirDialogoAlimento(): void {
+  public abrirDialogoDetalhesAlimento(): void {
+    this.dialogo.open(DetalhesAlimentosComponent, {
+      width: '100%',
+      maxWidth: '70rem'
+    })
+  }
 
+  public abrirDialogoAlimento(): void {
     this.dialogo.open(AlimentoComponent, {
       width: '100%',
       maxWidth: '70rem'

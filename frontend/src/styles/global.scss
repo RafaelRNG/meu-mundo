@@ -48,3 +48,12 @@ body {
     margin-left: 1rem;
   }
 }
+
+input.sem-contador::-webkit-outer-spin-button,
+input.sem-contador::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.sem-contador {
+  text-align: end;
+}

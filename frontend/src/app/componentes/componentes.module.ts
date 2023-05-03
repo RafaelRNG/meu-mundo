@@ -21,6 +21,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 //Importações de componentes
 import { CabecalhoComponent } from './cabecalho/cabecalho.component';
@@ -36,6 +37,7 @@ import { CarregandoComponent } from './carregando/carregando.component';
 import { MenuCriarEntidadesComponent } from './rotas/alimentacao/menu-criar-entidades/menu-criar-entidades.component';
 import { AlimentoComponent } from './rotas/alimentacao/alimento/alimento.component';
 import { ListaAlimentoComponent } from './rotas/alimentacao/lista-alimento/lista-alimento.component';
+import { DetalhesAlimentosComponent } from './rotas/alimentacao/detalhes-alimentos/detalhes-alimentos.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { ListaAlimentoComponent } from './rotas/alimentacao/lista-alimento/lista
     MenuCriarEntidadesComponent,
     AlimentoComponent,
     ListaAlimentoComponent,
+    DetalhesAlimentosComponent,
   ],
   imports: [
     CommonModule,
@@ -72,7 +75,8 @@ import { ListaAlimentoComponent } from './rotas/alimentacao/lista-alimento/lista
     MatSnackBarModule,
     MatProgressSpinnerModule,
     MatMenuModule,
-    MatTableModule
+    MatTableModule,
+    MatAutocompleteModule
   ],
   exports: [
     CabecalhoComponent,
