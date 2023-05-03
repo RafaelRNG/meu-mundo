@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { AlimentoDetalhe } from '../../../../tipos/PlanoAlimentar.tipo';
+import { AlimentoDetalhe, DetalhesDoAlimento } from '../../../../tipos/PlanoAlimentar.tipo';
 import { AlimentoService } from '../servicos/alimento.service';
+import { CompartilhadosService } from 'src/app/compartilhados/compartilhados.service';
+import { DetalheAlimentoService } from '../servicos/detalhe-alimento.service';
 
 @Component({
   selector: 'rng-detalhes-alimentos',
@@ -16,11 +18,30 @@ export class DetalhesAlimentosComponent implements OnInit {
 
   constructor(public ref: MatDialogRef<DetalhesAlimentosComponent>,
     private detalheConstrutor: FormBuilder,
-    private alimentoService: AlimentoService) { }
+    private alimentoService: AlimentoService,
+    private detalheAlimentoService: DetalheAlimentoService,
+    private compartilhadosService: CompartilhadosService) { }
 
   ngOnInit(): void {
     this.criarFormularioDetalhe()
     this.retornarAlimentos()
+  }
+
+  public salvarPlanoAlimentar(): void {
+
+    const detalhesAlimentoParaSalvar = {
+      ...this.formularioDetalhe.value,
+      alimento: this.formularioDetalhe.controls['alimento'].value.codigo
+    }
+
+    this.detalheAlimentoService.salvarPlanoAlimentar(detalhesAlimentoParaSalvar)
+      .subscribe({
+        next: () => this.compartilhadosService.ativarSnackBar('Detalhe do alimento salvo com sucesso!', 'mensagem-sucesso'),
+        error: error => {
+          console.log(error)
+          this.compartilhadosService.ativarSnackBar('Erro ao tentar salvar detalhe do alimento', 'mensagem-erro')
+        }
+      })
   }
 
   private criarFormularioDetalhe(): void {
@@ -38,9 +59,8 @@ export class DetalhesAlimentosComponent implements OnInit {
   private retornarAlimentos(): void {
     this.alimentoService.retornarAlimentos()
       .subscribe({
-        next: resposta => {
-          this.alimentos = resposta
-        }
+        next: resposta => this.alimentos = resposta,
+        error: () => this.compartilhadosService.ativarSnackBar('Não foi possível carregar os alimentos!', 'mensagem-erro')
       })
   }
 }
