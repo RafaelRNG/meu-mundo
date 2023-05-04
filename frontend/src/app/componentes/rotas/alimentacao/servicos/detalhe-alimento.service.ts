@@ -12,6 +12,10 @@ export class DetalheAlimentoService {
 
   constructor(private clienteHttp: HttpClient) { }
 
+  public retornarDetalhesAlimentos(pagina: number = 0): Observable<any> {
+    return this.clienteHttp.get(`${this.urlApi}detalhes?sort=alimento,asc&page=${pagina}`)
+  }
+
   public salvarPlanoAlimentar(detalheAlimento: DetalhesDoAlimento): Observable<DetalhesDoAlimento> {
     return this.clienteHttp.post<DetalhesDoAlimento>(`${this.urlApi}detalhes`, detalheAlimento)
   }

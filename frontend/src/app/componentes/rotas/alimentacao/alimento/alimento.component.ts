@@ -71,12 +71,6 @@ export class AlimentoComponent implements OnInit {
     this.alimentoFormulario.controls['nome'].setValue(' ')
   }
 
-  private criarFormularioAlimento(): void {
-    this.alimentoFormulario = this.alimentoConstrutor.group({
-      nome: ['', [Validators.required, Validators.maxLength(200)]]
-    })
-  }
-
   public retornarAlimentos(): void {
     this.alimentoServico.retornarAlimentos()
       .subscribe({
@@ -89,5 +83,11 @@ export class AlimentoComponent implements OnInit {
           this.compartilhadosServico.ativarSnackBar('Erro ao tentar carregar a lista de alimentos!', 'mensagem-erro')
         }
       })
+  }
+
+  private criarFormularioAlimento(): void {
+    this.alimentoFormulario = this.alimentoConstrutor.group({
+      nome: ['', [Validators.required, Validators.maxLength(200)]]
+    })
   }
 }

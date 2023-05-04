@@ -1,51 +1,98 @@
 <h1 mat-dialog-title>Detalhe dos alimentos!</h1>
 
-<div mat-dialog-content>
+<div mat-dialog-content class="dialogo-container">
   <span class="acao-container">
-    <button mat-button mat-raised-button color="primary" (click)="this.salvarPlanoAlimentar()" mat-dialog-close
-      cdkFocusInitial>Salvar</button>
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="this.salvarPlanoAlimentar()"
+      mat-dialog-close
+      cdkFocusInitial
+    >
+      Salvar
+    </button>
   </span>
 
   <form [formGroup]="this.formularioDetalhe">
-
-    <mat-form-field class="peso-bruto-detalhe" appearance="outline" floatLabel="always">
+    <mat-form-field
+      class="peso-bruto-detalhe"
+      appearance="outline"
+      floatLabel="always"
+    >
       <mat-label>Peso bruto</mat-label>
-      <input matInput type="number" formControlName="pesoBruto" class="sem-contador">
+      <input
+        matInput
+        type="number"
+        formControlName="pesoBruto"
+        class="sem-contador"
+      />
       <mat-icon matPrefix>scale</mat-icon>
     </mat-form-field>
 
-    <mat-form-field class="peso-bruto-detalhe" appearance="outline" floatLabel="always">
+    <mat-form-field
+      class="peso-bruto-detalhe"
+      appearance="outline"
+      floatLabel="always"
+    >
       <mat-label>Carboidrato</mat-label>
-      <input matInput type="number" formControlName="carbo" class="sem-contador">
+      <input
+        matInput
+        type="number"
+        formControlName="carbo"
+        class="sem-contador"
+      />
       <mat-icon matPrefix>sell</mat-icon>
     </mat-form-field>
 
-    <mat-form-field class="peso-bruto-detalhe" appearance="outline" floatLabel="always">
+    <mat-form-field
+      class="peso-bruto-detalhe"
+      appearance="outline"
+      floatLabel="always"
+    >
       <mat-label>Proteína</mat-label>
-      <input matInput type="number" formControlName="proteina" class="sem-contador">
+      <input
+        matInput
+        type="number"
+        formControlName="proteina"
+        class="sem-contador"
+      />
       <mat-icon matPrefix>sell</mat-icon>
     </mat-form-field>
 
-    <mat-form-field class="peso-bruto-detalhe" appearance="outline" floatLabel="always">
+    <mat-form-field
+      class="peso-bruto-detalhe"
+      appearance="outline"
+      floatLabel="always"
+    >
       <mat-label>Gordura</mat-label>
-      <input matInput type="number" formControlName="gordura" class="sem-contador">
+      <input
+        matInput
+        type="number"
+        formControlName="gordura"
+        class="sem-contador"
+      />
       <mat-icon matPrefix>sell</mat-icon>
     </mat-form-field>
-
 
     <mat-form-field class="peso-bruto-detalhe" appearance="outline">
       <mat-label>Alimento</mat-label>
-      <input type="text" matInput formControlName="alimento"
-        [value]="this.formularioDetalhe.controls['alimento'].value.nome || ''" [matAutocomplete]="auto">
+      <input
+        type="text"
+        matInput
+        formControlName="alimento"
+        [value]="this.formularioDetalhe.controls['alimento'].value.nome || ''"
+        [matAutocomplete]="auto"
+      />
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
         <mat-option *ngFor="let alimento of alimentos" [value]="alimento">
-          {{alimento.nome}}
+          {{ alimento.nome }}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
   </form>
 
-  <section>
+  <section class="lista-detalhes-alimentos-container">
     <rng-lista-detalhes-alimentos></rng-lista-detalhes-alimentos>
   </section>
 </div>

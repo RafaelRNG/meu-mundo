@@ -1,51 +1,61 @@
 <h3 class="lista-titulo">Detalhes dos alimentos</h3>
 
-<table class="tabela-alimento-container" mat-table [dataSource]="this.detalhesAlimentos">
+<table
+  class="tabela-container tabela-detalhes-alimentos"
+  mat-table
+  [dataSource]="this.detalhesAlimentos"
+>
   <ng-container matColumnDef="pesoBruto">
-    <th mat-header-cell *matHeaderCellDef>
+    <th mat-header-cell class="cabecalho-colunas" *matHeaderCellDef>
       Peso bruto
     </th>
-    <td mat-cell *matCellDef="let detalhe">
-      {{ detalhe.pesoBruto }}
+    <td mat-cell class="corpo-colunas" *matCellDef="let detalhe">
+      {{ detalhe.pesoBruto }}g
     </td>
   </ng-container>
 
   <ng-container matColumnDef="carboidrato">
-    <th mat-header-cell *matHeaderCellDef>
+    <th mat-header-cell class="cabecalho-colunas" *matHeaderCellDef>
       Carboidrato
     </th>
-    <td mat-cell *matCellDef="let detalhe">
-      {{ detalhe.carbo }}
+    <td mat-cell class="corpo-colunas" *matCellDef="let detalhe">
+      {{ detalhe.carbo }}g
     </td>
   </ng-container>
 
   <ng-container matColumnDef="proteina">
-    <th mat-header-cell *matHeaderCellDef>
+    <th mat-header-cell class="cabecalho-colunas" *matHeaderCellDef>
       Proteina
     </th>
-    <td mat-cell *matCellDef="let detalhe">
-      {{ detalhe.proteina }}
+    <td mat-cell class="corpo-colunas" *matCellDef="let detalhe">
+      {{ detalhe.proteina }}g
     </td>
   </ng-container>
 
   <ng-container matColumnDef="gordura">
-    <th mat-header-cell *matHeaderCellDef>
-      Gordura
-    </th>
-    <td mat-cell *matCellDef="let detalhe">
-      {{ detalhe.gordura }}
+    <th mat-header-cell class="cabecalho-colunas" *matHeaderCellDef>Gordura</th>
+    <td mat-cell class="corpo-colunas" *matCellDef="let detalhe">
+      {{ detalhe.gordura }}g
     </td>
   </ng-container>
 
   <ng-container matColumnDef="alimento">
-    <th mat-header-cell *matHeaderCellDef>
-      Gordura
+    <th mat-header-cell class="cabecalho-colunas" *matHeaderCellDef>
+      Alimento
     </th>
-    <td mat-cell *matCellDef="let detalhe">
+    <td mat-cell class="corpo-colunas" *matCellDef="let detalhe">
       {{ detalhe.alimento.nome }}
     </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="this.cabecalho"></tr>
-  <tr mat-row *matRowDef="let row; columns cabecalho;"></tr>
+  <tr mat-row *matRowDef="let row; columns: cabecalho"></tr>
 </table>
+
+<div>
+  <mat-paginator
+    [length]="this.totalElementos"
+    [pageSize]="this.tamanhoPagina"
+    (page)="this.mudarPagina($event)"
+  ></mat-paginator>
+</div>
