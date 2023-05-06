@@ -3,6 +3,7 @@ package br.com.rng.backend.controles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +36,8 @@ public class DetalheAlimentoControle {
 
    @GetMapping
    public ResponseEntity<Page<RetornarDetalheAlimentoDTO>> buscarDetalhes(Pageable paginacao) {
-      return ResponseEntity.ok(this.detalheAlimentoServico.buscarDetalhes(paginacao));
+      Pageable paginacaoAlterada = PageRequest.of(paginacao.getPageNumber(), 6, paginacao.getSort());
+      return ResponseEntity.ok(this.detalheAlimentoServico.buscarDetalhes(paginacaoAlterada));
    }
 
    @GetMapping("/{codigo}")
