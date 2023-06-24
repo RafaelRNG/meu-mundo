@@ -2,18 +2,38 @@
 
 <div mat-dialog-content>
   <span class="acao-container">
-    <button mat-button mat-raised-button color="primary" mat-dialog-close cdkFocusInitial
-      (click)="this.salvarAlimento()" *ngIf="!this.praAlterar">
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      mat-dialog-close
+      (click)="this.salvarAlimento()"
+      *ngIf="!this.praAlterar"
+      [disabled]="this.alimentoFormulario.invalid"
+    >
       <mat-icon>check</mat-icon>
       Salvar
     </button>
 
-    <button mat-button mat-raised-button color="warn" (click)="this.cancelarAlteracao()" *ngIf="this.praAlterar">
+    <button
+      mat-button
+      mat-raised-button
+      color="warn"
+      (click)="this.cancelarAlteracao()"
+      *ngIf="this.praAlterar"
+    >
       <mat-icon>close</mat-icon>
       Cancelar
     </button>
 
-    <button mat-button mat-raised-button color="primary" *ngIf="this.praAlterar" (click)="this.alterarAlimento()">
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      *ngIf="this.praAlterar"
+      (click)="this.alterarAlimento()"
+      [disabled]="this.alimentoFormulario.invalid"
+    >
       <mat-icon>edit</mat-icon>
       Alterar
     </button>
@@ -22,13 +42,16 @@
   <form [formGroup]="this.alimentoFormulario">
     <mat-form-field appearance="outline" class="nome-alimento">
       <mat-label>Nome</mat-label>
-      <input matInput type="text" formControlName="nome">
+      <input matInput type="text" formControlName="nome" />
     </mat-form-field>
   </form>
 
   <section>
-    <rng-lista-alimento (alimentoEmitido)="this.carregarAlimentoEmitido($event)" (recarregar)="this.retornarAlimentos()"
-      [alimentos]="this.alimentos"></rng-lista-alimento>
+    <rng-lista-alimento
+      (alimentoEmitido)="this.carregarAlimentoEmitido($event)"
+      (recarregar)="this.retornarAlimentos()"
+      [alimentos]="this.alimentos"
+    ></rng-lista-alimento>
     <rng-carregando *ngIf="this.carregando"></rng-carregando>
   </section>
 </div>

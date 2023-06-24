@@ -16,7 +16,11 @@ export class DetalheAlimentoService {
     return this.clienteHttp.get(`${this.urlApi}detalhes?sort=alimento,asc&page=${pagina}`)
   }
 
-  public salvarPlanoAlimentar(detalheAlimento: DetalhesDoAlimento): Observable<DetalhesDoAlimento> {
+  public salvarDetalhesAlimentos(detalheAlimento: DetalhesDoAlimento): Observable<DetalhesDoAlimento> {
     return this.clienteHttp.post<DetalhesDoAlimento>(`${this.urlApi}detalhes`, detalheAlimento)
+  }
+
+  public alterarDetalheAlimentos(codigo: number, detalheAlimento: DetalhesDoAlimento): Observable<DetalhesDoAlimento> {
+    return this.clienteHttp.put<DetalhesDoAlimento>(`${this.urlApi}detalhes/${codigo}`, detalheAlimento)
   }
 }
