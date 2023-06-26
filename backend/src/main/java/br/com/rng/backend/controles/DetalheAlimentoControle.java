@@ -24,6 +24,8 @@ import br.com.rng.backend.servicos.DetalheAlimentoServico;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/detalhes")
 public class DetalheAlimentoControle {
@@ -38,6 +40,12 @@ public class DetalheAlimentoControle {
    public ResponseEntity<Page<RetornarDetalheAlimentoDTO>> buscarDetalhes(Pageable paginacao) {
       Pageable paginacaoAlterada = PageRequest.of(paginacao.getPageNumber(), 6, paginacao.getSort());
       return ResponseEntity.ok(this.detalheAlimentoServico.buscarDetalhes(paginacaoAlterada));
+   }
+
+   @GetMapping("/sempaginacao")
+   public ResponseEntity<List<RetornarDetalheAlimentoDTO>> buscarTodosSemPaginacao() {
+      List<RetornarDetalheAlimentoDTO> detalhes = this.detalheAlimentoServico.buscarTodosSemPaginacao();
+      return ResponseEntity.ok(detalhes);
    }
 
    @GetMapping("/{codigo}")

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DetalheAlimentoService } from '../servicos/detalhe-alimento.service';
 
 @Component({
   selector: 'rng-refeicoes',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RefeicoesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private detalheAlimentoServico: DetalheAlimentoService) { }
 
   ngOnInit(): void {
   }

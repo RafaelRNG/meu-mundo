@@ -1,10 +1,13 @@
 package br.com.rng.backend.servicos;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,6 +37,12 @@ public class DetalheAlimentoServico {
             .map(alimento -> new RetornarDetalheAlimentoDTO(alimento));
 
       return alimentosDtos;
+   }
+
+   public List<RetornarDetalheAlimentoDTO> buscarTodosSemPaginacao() {
+      List<DetalheAlimento> detalhes = this.detalheAlimentoRepositorio.findAll(Sort.by(new Sort.Order(Sort.Direction.DESC, "codigo")));
+
+      return detalhes.stream().map((detalhe) -> new RetornarDetalheAlimentoDTO(detalhe)).collect(Collectors.toList());
    }
 
    @Transactional(readOnly = true)
