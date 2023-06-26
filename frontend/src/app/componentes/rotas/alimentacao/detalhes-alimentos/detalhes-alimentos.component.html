@@ -42,7 +42,7 @@
   <!--Formulário detalhes de alimento-->
   <form [formGroup]="this.formularioDetalhe">
     <mat-form-field
-      class="peso-bruto-detalhe"
+      class="input-container"
       appearance="outline"
       floatLabel="always"
     >
@@ -53,11 +53,10 @@
         formControlName="pesoBruto"
         class="sem-contador"
       />
-      <mat-icon matPrefix>scale</mat-icon>
     </mat-form-field>
 
     <mat-form-field
-      class="peso-bruto-detalhe"
+      class="input-container menor"
       appearance="outline"
       floatLabel="always"
     >
@@ -68,11 +67,10 @@
         formControlName="carbo"
         class="sem-contador"
       />
-      <mat-icon matPrefix>sell</mat-icon>
     </mat-form-field>
 
     <mat-form-field
-      class="peso-bruto-detalhe"
+      class="input-container menor"
       appearance="outline"
       floatLabel="always"
     >
@@ -83,11 +81,10 @@
         formControlName="proteina"
         class="sem-contador"
       />
-      <mat-icon matPrefix>sell</mat-icon>
     </mat-form-field>
 
     <mat-form-field
-      class="peso-bruto-detalhe"
+      class="input-container menor"
       appearance="outline"
       floatLabel="always"
     >
@@ -98,10 +95,9 @@
         formControlName="gordura"
         class="sem-contador"
       />
-      <mat-icon matPrefix>sell</mat-icon>
     </mat-form-field>
 
-    <mat-form-field class="peso-bruto-detalhe" appearance="outline">
+    <mat-form-field class="input-container" appearance="outline">
       <mat-label>Alimento</mat-label>
       <input
         type="text"

@@ -1,24 +1,7 @@
-.peso-bruto-detalhe {
-  width: 100%;
-}
-
 .dialogo-container {
   overflow-x: hidden;
 }
 
 .lista-detalhes-alimentos-container {
   overflow-y: auto;
-}
-
-@media (min-width: 60rem) {
-  .peso-bruto-detalhe {
-    &:not(:nth-of-type(1)) {
-      width: 33.3%;
-      padding: 0 0.3rem;
-    }
-
-    &:nth-child(5) {
-      width: 100%;
-    }
-  }
 }

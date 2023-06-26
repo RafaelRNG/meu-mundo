@@ -1,0 +1,62 @@
+<h1 mat-dialog-title>Refeições</h1>
+
+<div mat-dialog-content>
+  <span class="acao-container">
+    <button mat-button mat-raised-button color="primary" mat-dialog-close>
+      <mat-icon>check</mat-icon>
+      Salvar
+    </button>
+  </span>
+
+  <form>
+    <mat-form-field class="input-container" appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input type="text" matInput />
+    </mat-form-field>
+
+    <mat-form-field class="input-container" appearance="outline">
+      <mat-label>Descrição</mat-label>
+      <textarea matInput rows="3"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="input-container sem-contador" appearance="outline">
+      <mat-label>Horário</mat-label>
+      <input type="time" matInput />
+    </mat-form-field>
+
+    <mat-form-field
+      class="input-container menor"
+      appearance="outline"
+      floatLabel="always"
+    >
+      <mat-label>Carboidrato</mat-label>
+      <input matInput type="number" class="sem-contador" />
+    </mat-form-field>
+
+    <mat-form-field
+      class="input-container menor"
+      appearance="outline"
+      floatLabel="always"
+    >
+      <mat-label>Proteína</mat-label>
+      <input matInput type="number" class="sem-contador" />
+    </mat-form-field>
+
+    <mat-form-field
+      class="input-container menor"
+      appearance="outline"
+      floatLabel="always"
+    >
+      <mat-label>Gordura</mat-label>
+      <input matInput type="number" class="sem-contador" />
+    </mat-form-field>
+
+    <mat-selection-list
+      class="lista-escolha-container"
+      formControlName="refeicoes"
+    >
+      <mat-list-option #opicao color="primary" class="refeicao-conteudo">
+      </mat-list-option>
+    </mat-selection-list>
+  </form>
+</div>

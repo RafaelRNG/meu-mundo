@@ -9,12 +9,6 @@ h1 {
   flex-direction: column;
 
   padding: 1rem;
-
-  .lista-refeicoes-container {
-    .refeicao-conteudo {
-      text-align: start;
-    }
-  }
 }
 
 @media (min-width: 70rem) {

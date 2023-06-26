@@ -1,27 +1,46 @@
 <h1>Criar plano Alimentar</h1>
 
-<form [formGroup]="this.planoFormulario" class="plano-alimentar-formulario-container">
-
+<form
+  [formGroup]="this.planoFormulario"
+  class="plano-alimentar-formulario-container"
+>
   <span class="acao-container">
-    <a [routerLink]="['/alimentacao']" mat-button mat-raised-button color="warn">
+    <a
+      [routerLink]="['/alimentacao']"
+      mat-button
+      mat-raised-button
+      color="warn"
+    >
       <mat-icon>close</mat-icon>
       Cancelar
     </a>
-    <button *ngIf="!this.rotaCodigo" mat-button mat-raised-button color="primary"
-      [disabled]="this.planoFormulario.invalid" (click)="this.salvarPlanoAlimentar()">
+    <button
+      *ngIf="!this.rotaCodigo"
+      mat-button
+      mat-raised-button
+      color="primary"
+      [disabled]="this.planoFormulario.invalid"
+      (click)="this.salvarPlanoAlimentar()"
+    >
       <mat-icon>check</mat-icon>
       Salvar
     </button>
 
-    <button *ngIf="this.rotaCodigo" mat-button mat-raised-button color="primary"
-      [disabled]="this.planoFormulario.invalid" (click)="this.alterarPlanoAlimentar()">
+    <button
+      *ngIf="this.rotaCodigo"
+      mat-button
+      mat-raised-button
+      color="primary"
+      [disabled]="this.planoFormulario.invalid"
+      (click)="this.alterarPlanoAlimentar()"
+    >
       <mat-icon>edit</mat-icon>
       Alterar
     </button>
   </span>
   <mat-form-field appearance="outline">
     <mat-label>Nome</mat-label>
-    <input type="text" matInput formControlName="nome">
+    <input type="text" matInput formControlName="nome" />
   </mat-form-field>
 
   <mat-form-field appearance="outline">
@@ -29,10 +48,18 @@
     <textarea matInput rows="10" formControlName="descricao"></textarea>
   </mat-form-field>
 
-  <mat-selection-list class="lista-refeicoes-container" formControlName="refeicoes">
-    <mat-list-option #opicao color="primary" class="refeicao-conteudo" *ngFor="let refeicao of this.refeicoes"
-      value="{{refeicao.codigo}}">
-      {{refeicao.nome}}
+  <mat-selection-list
+    class="lista-escolha-container"
+    formControlName="refeicoes"
+  >
+    <mat-list-option
+      #opicao
+      color="primary"
+      class="refeicao-conteudo"
+      *ngFor="let refeicao of this.refeicoes"
+      value="{{ refeicao.codigo }}"
+    >
+      {{ refeicao.nome }}
     </mat-list-option>
   </mat-selection-list>
 </form>

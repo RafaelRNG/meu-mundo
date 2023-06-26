@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AlimentoComponent } from '../alimento/alimento.component';
 import { DetalhesAlimentosComponent } from '../detalhes-alimentos/detalhes-alimentos.component';
+import { RefeicoesComponent } from '../refeicoes/refeicoes.component';
 
 @Component({
   selector: 'rng-menu-criar-entidades',
@@ -13,6 +14,13 @@ export class MenuCriarEntidadesComponent implements OnInit {
   constructor(public dialogo: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  public abrirDialogRefeicao(): void {
+    this.dialogo.open(RefeicoesComponent, {
+      width: '100%',
+      maxWidth: '70rem'
+    })
   }
 
   public abrirDialogoDetalhesAlimento(): void {

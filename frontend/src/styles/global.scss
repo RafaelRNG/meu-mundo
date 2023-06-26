@@ -70,3 +70,25 @@ input.sem-contador::-webkit-inner-spin-button {
 input.sem-contador {
   text-align: end;
 }
+
+.input-container {
+  width: 100%;
+}
+
+.lista-escolha-container {
+  max-height: 25rem;
+  overflow-y: auto;
+
+  .refeicao-conteudo {
+    text-align: start;
+  }
+}
+
+@media (min-width: 60rem) {
+  .input-container {
+    &.menor {
+      width: 33.3%;
+      padding: 0 0.3rem;
+    }
+  }
+}
